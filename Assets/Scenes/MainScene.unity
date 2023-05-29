@@ -398,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122767366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: -0.009999931, z: -10}
+  m_LocalPosition: {x: 31.59, y: -0.109999955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1065,7 +1065,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: -0.009999931, z: -10}
+  m_LocalPosition: {x: 31.59, y: -0.109999955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1482,7 +1482,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 4.749653, y: -0.2787745, z: 0}
+    - position: {x: 5.5767403, y: -0.22238207, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -1492,7 +1492,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 11.219906, y: -0.382133, z: 0}
+    - position: {x: 12.084591, y: -0.2505505, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -1576,8 +1576,8 @@ SpriteShapeRenderer:
   m_Sprites:
   - {fileID: 21300000, guid: 9ea8801975e4840759a061a599292303, type: 3}
   m_LocalAABB:
-    m_Center: {x: 8.671686, y: 0.38303536, z: 0}
-    m_Extent: {x: 11.168138, y: 0.78336716, z: 0}
+    m_Center: {x: 8.671672, y: 0.44949704, z: 0}
+    m_Extent: {x: 11.168333, y: 0.7114615, z: 0}
 --- !u!1 &550628436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,8 +2291,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3171959362624450502, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171959362624450502, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171959362624450502, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -365986937
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
@@ -3267,7 +3275,7 @@ GameObject:
   - component: {fileID: 954116931}
   - component: {fileID: 954116930}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3290,7 +3298,8 @@ MonoBehaviour:
     model: tts_models/multilingual/multi-dataset/your_tts
   trigger: 0
   clip: Assets/TTS Bubbles/Audio&Meta/Test.wav
-  collider2D: 
+  colliderTwoD: 
+  colliderThreeD: 
 --- !u!82 &954116931
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4267,7 +4276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3043047233231422153, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.474
       objectReference: {fileID: 0}
     - target: {fileID: 3043047233231422153, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4299,7 +4308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171959362624450502, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3171959362624450502, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
       propertyPath: m_SortingOrder
@@ -4307,7 +4316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171959362624450502, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
       propertyPath: m_SortingLayerID
-      value: 0
+      value: -365986937
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
@@ -4553,8 +4562,8 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -365986937
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
@@ -8263,8 +8272,8 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -365986937
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
@@ -9151,11 +9160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30
+      value: 31.59
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalPosition.z

@@ -16,24 +16,51 @@ public class SpeechBubbleGen : MonoBehaviour
     public string clip;
 
 	[AssetPath.Attribute(typeof(Collider2D))]
-	public string collider2D;
+	public string colliderTwoD;
+
+	[AssetPath.Attribute(typeof(Collider))]
+	public string colliderThreeD;
 
 	private AudioClip audioClip;
     private TextAsset textJSON;
     private string metaPath;
     private TextMeshPro textBox;
     private AudioSource audioSource;
+    private Collider2D twoCollider;
+	private Collider threeCollider;
 
-    public void Generate()
+
+	public void Generate()
     {
 		audioClip = AssetPath.Load<AudioClip>(clip);
         textBox = GetComponent<TextMeshPro>();
         textBox.text = bubble.text;
+
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = audioClip;
+        if (trigger == TriggerType.Awake)
+        {
+            audioSource.playOnAwake = true;
+        }
+        else
+        {
+			audioSource.playOnAwake = false;
+		}
 	}
 
-    public void GetMeta()
+	private void Update()
+	{
+		if (trigger == TriggerType.Collider2D)
+        {
+			twoCollider = AssetPath.Load<Collider2D>(colliderTwoD);
+		}
+		if (trigger == TriggerType.Collider3D)
+		{
+			threeCollider = AssetPath.Load<Collider>(colliderThreeD);
+		}
+	}
+
+	public void GetMeta()
     {
         bubble = new Bubble();
         int lastSlash = clip.Length - Reverse(clip).IndexOf("/");
