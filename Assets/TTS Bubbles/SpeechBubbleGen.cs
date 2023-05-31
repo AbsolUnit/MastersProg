@@ -15,20 +15,15 @@ public class SpeechBubbleGen : MonoBehaviour
     [AssetPath.Attribute(typeof(AudioClip))]
     public string clip;
 
-	[AssetPath.Attribute(typeof(Collider2D))]
-	public string colliderTwoD;
-
-	[AssetPath.Attribute(typeof(Collider))]
-	public string colliderThreeD;
+	public GameObject colliderParent;
+	public Collider2D available2DCollider;
+	public Collider available3DCollider;
 
 	private AudioClip audioClip;
     private TextAsset textJSON;
     private string metaPath;
     private TextMeshPro textBox;
     private AudioSource audioSource;
-    private Collider2D twoCollider;
-	private Collider threeCollider;
-
 
 	public void Generate()
     {
@@ -40,23 +35,44 @@ public class SpeechBubbleGen : MonoBehaviour
         audioSource.clip = audioClip;
         if (trigger == TriggerType.Awake)
         {
-            audioSource.playOnAwake = true;
+			textBox.enabled = true;
+			audioSource.playOnAwake = true;
         }
-        else
-        {
-			audioSource.playOnAwake = false;
-		}
-	}
-
-	private void Update()
-	{
-		if (trigger == TriggerType.Collider2D)
-        {
-			twoCollider = AssetPath.Load<Collider2D>(colliderTwoD);
-		}
-		if (trigger == TriggerType.Collider3D)
+		else if (trigger == TriggerType.Collider2D)
 		{
-			threeCollider = AssetPath.Load<Collider>(colliderThreeD);
+			textBox.enabled = false;
+			audioSource.playOnAwake = false;
+			if (gameObject.GetComponent<BoxCollider>() != null)
+			{
+				DestroyImmediate(gameObject.GetComponent<BoxCollider>());
+			}
+			if (gameObject.GetComponent<BoxCollider2D>() == null)
+			{
+				gameObject.AddComponent<BoxCollider2D>();
+				gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+			}
+			else
+			{
+				gameObject.GetComponent<BoxCollider2D>().enabled = true;
+			}
+		}
+		else if (trigger == TriggerType.Collider3D)
+		{
+			textBox.enabled = false;
+			audioSource.playOnAwake = false;
+			if (gameObject.GetComponent<BoxCollider2D>() != null)
+			{
+				DestroyImmediate(gameObject.GetComponent<BoxCollider2D>());
+			}
+			if (gameObject.GetComponent<BoxCollider>() == null)
+			{
+				gameObject.AddComponent<BoxCollider>();
+				gameObject.GetComponent<BoxCollider>().isTrigger = true;
+			}
+			else
+			{
+				gameObject.GetComponent<BoxCollider>().enabled = true;
+			}
 		}
 	}
 
@@ -74,5 +90,36 @@ public class SpeechBubbleGen : MonoBehaviour
 		char[] charArray = s.ToCharArray();
 		Array.Reverse(charArray);
 		return new string(charArray);
+	}
+
+	private void Awake()
+	{
+		audioSource = GetComponent<AudioSource>();
+		textBox = GetComponent<TextMeshPro>();
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (trigger == TriggerType.Collider2D)
+		{
+			if (collision == available2DCollider)
+			{
+				Debug.Log(available2DCollider);
+				textBox.enabled = true;
+				audioSource.Play();
+			}
+		}
+	}
+
+	private void OnTriggerEnter(Collider collision)
+	{
+		if (trigger == TriggerType.Collider3D)
+		{
+			if (collision == available3DCollider)
+			{
+				textBox.enabled = true;
+				audioSource.Play();
+			}
+		}
 	}
 }
