@@ -16,7 +16,7 @@ namespace NotSlot.HandPainted2D.Editor
 
       public const short TAGS_LAYERS_VERSION = 1;
 
-      public const string ROOT_FOLDER = "Assets/2D Hand Painted";
+      public const string ROOT_FOLDER = "Assets/Imports/2D Hand Painted";
 
       public const string COMMON_FOLDER = ROOT_FOLDER + "/$Common";
 

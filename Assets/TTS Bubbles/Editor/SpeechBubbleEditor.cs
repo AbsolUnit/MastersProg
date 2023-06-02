@@ -109,6 +109,7 @@ public class SpeechBubbleEditor : Editor
 			EditorGUILayout.LabelField(label, GUILayout.Width(EditorGUIUtility.labelWidth - 4));
 			GUILayout.BeginScrollView(new Vector2(0,0), GUILayout.Height(height));
 			{
+				EditorStyles.textField.wordWrap = true;
 				GUILayout.TextArea(text, EditorStyles.textField, GUILayout.ExpandHeight(true));
 			}
 			GUILayout.EndScrollView();
