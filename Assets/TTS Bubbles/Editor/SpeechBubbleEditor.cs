@@ -16,8 +16,8 @@ public class SpeechBubbleEditor : Editor
 	private List<Collider2D> collider2DArr = new List<Collider2D>();
 	private List<Collider> collider3DArr = new List<Collider>();
 	private List<string> colliderStringArr = new List<string>();
-	private int indx;
 
+	private SerializedProperty indx;
 	private SerializedProperty bubble; //Bubble
 	private SerializedProperty trigger; //TriggerType
 	private SerializedProperty clip; //string
@@ -30,6 +30,7 @@ public class SpeechBubbleEditor : Editor
 
 	private void OnEnable()
 	{
+		indx = serializedObject.FindProperty("indx");
 		bubble = serializedObject.FindProperty("bubble");
 		trigger = serializedObject.FindProperty("trigger");
 		clip = serializedObject.FindProperty("clip");
@@ -60,10 +61,10 @@ public class SpeechBubbleEditor : Editor
 			{
 				//EditorGUILayout.PropertyField(colliderTwoD, new GUIContent("2D Collider", "The 2D collider you wish to use as a trigger"));
 				ContructColliderArray((GameObject)colliderParent.objectReferenceValue, true);
-				indx = EditorGUILayout.Popup(new GUIContent("2D Collider", "The 2D collider you wish to use as a trigger"), indx, colliderStringArr.ToArray());
+				indx.intValue = EditorGUILayout.Popup(new GUIContent("2D Collider", "The 2D collider you wish to use as a trigger"), indx.intValue, colliderStringArr.ToArray());
 				if (collider2DArr.Count() != 0)
 				{
-					generator.available2DCollider = collider2DArr[indx];
+					generator.available2DCollider = collider2DArr[indx.intValue];
 				}
 			}
 
@@ -71,10 +72,10 @@ public class SpeechBubbleEditor : Editor
 			{
 				//EditorGUILayout.PropertyField(colliderThreeD, new GUIContent("3D Collider", "The 3D collider you wish to use as a trigger"));
 				ContructColliderArray((GameObject)colliderParent.objectReferenceValue, false);
-				indx = EditorGUILayout.Popup(new GUIContent("3D Collider", "The 3D collider you wish to use as a trigger"), indx, colliderStringArr.ToArray());
+				indx.intValue = EditorGUILayout.Popup(new GUIContent("3D Collider", "The 3D collider you wish to use as a trigger"), indx.intValue, colliderStringArr.ToArray());
 				if (collider3DArr.Count() != 0)
 				{
-					generator.available3DCollider = collider3DArr[indx];
+					generator.available3DCollider = collider3DArr[indx.intValue];
 				}
 			}
 		}
@@ -82,8 +83,14 @@ public class SpeechBubbleEditor : Editor
 
 		EditorGUI.indentLevel--;
 
-		ReadOnlyTextField(true, new GUIContent("Bubble Text", "Text generated from meta data"), generator.bubble.text);
-		ReadOnlyTextField(false, new GUIContent("Language Model", "Model name generated from meta data"), generator.bubble.model);
+		EditorGUILayout.LabelField(new GUIContent("Bubbles:", "All the paragraphs in this meta file"));
+		EditorGUI.indentLevel++;
+		for (int i=0; i < generator.bubble.bubble.Length; i++)
+		{
+			ReadOnlyTextField(true, new GUIContent("Text " + i.ToString() + ":", "Text generated from meta data"), generator.bubble.bubble[i].speech);
+		}
+		ReadOnlyTextField(false, new GUIContent("Voice Model:", "Model name generated from meta data"), generator.bubble.model);
+		EditorGUI.indentLevel--;
 
 		EditorGUILayout.Space(10);
 

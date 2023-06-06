@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using System.Reflection;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -15,6 +16,7 @@ public class SpeechBubbleGen : MonoBehaviour
     [AssetPath.Attribute(typeof(AudioClip))]
     public string clip;
 
+	public int indx;
 	public GameObject colliderParent;
 	public Collider2D available2DCollider;
 	public Collider available3DCollider;
@@ -29,7 +31,7 @@ public class SpeechBubbleGen : MonoBehaviour
     {
 		audioClip = AssetPath.Load<AudioClip>(clip);
         textBox = GetComponent<TextMeshPro>();
-        textBox.text = bubble.text;
+        textBox.text = bubble.bubble[0].speech;
 
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = audioClip;
@@ -82,7 +84,7 @@ public class SpeechBubbleGen : MonoBehaviour
         int lastSlash = clip.Length - Reverse(clip).IndexOf("/");
 		metaPath = clip.Substring(0, lastSlash) + "meta_" + clip.Substring(lastSlash, clip.IndexOf(".", lastSlash) - lastSlash) + ".json";
         textJSON = AssetPath.Load<TextAsset>(metaPath);
-        bubble = JsonUtility.FromJson<Bubble>(textJSON.text);
+		bubble = JsonUtility.FromJson<Bubble>(textJSON.text) ;
 	}
 
 	public static string Reverse(string s)
@@ -104,9 +106,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		{
 			if (collision == available2DCollider)
 			{
-				Debug.Log(available2DCollider);
-				textBox.enabled = true;
-				audioSource.Play();
+				PlayBubble();
 			}
 		}
 	}
@@ -117,9 +117,14 @@ public class SpeechBubbleGen : MonoBehaviour
 		{
 			if (collision == available3DCollider)
 			{
-				textBox.enabled = true;
-				audioSource.Play();
+				PlayBubble();
 			}
 		}
+	}
+
+	public void PlayBubble()
+	{
+		textBox.enabled = true;
+		audioSource.Play();
 	}
 }
