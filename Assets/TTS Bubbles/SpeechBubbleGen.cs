@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using TMPro;
 using System.Reflection;
+using UnityEditor.ShaderGraph.Serialization;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -13,28 +14,26 @@ public class SpeechBubbleGen : MonoBehaviour
     public Bubble bubble;
     public TriggerType trigger = TriggerType.Awake;
 
-    [AssetPath.Attribute(typeof(AudioClip))]
-    public string clip;
+    [AssetPath.Attribute(typeof(TextAsset))]
+    public string meta;
 
 	public int indx;
 	public GameObject colliderParent;
 	public Collider2D available2DCollider;
 	public Collider available3DCollider;
 
-	private AudioClip audioClip;
+	private AudioClip currentClip;
+	private string currentText;
+	private int clipCount;
+	private int currentClipCount = 0;
     private TextAsset textJSON;
-    private string metaPath;
     private TextMeshPro textBox;
     private AudioSource audioSource;
 
 	public void Generate()
     {
-		audioClip = AssetPath.Load<AudioClip>(clip);
-        textBox = GetComponent<TextMeshPro>();
-        textBox.text = bubble.bubble[0].speech;
+		UpdateClipText();
 
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
         if (trigger == TriggerType.Awake)
         {
 			textBox.enabled = true;
@@ -81,10 +80,16 @@ public class SpeechBubbleGen : MonoBehaviour
 	public void GetMeta()
     {
         bubble = new Bubble();
-        int lastSlash = clip.Length - Reverse(clip).IndexOf("/");
-		metaPath = clip.Substring(0, lastSlash) + "meta_" + clip.Substring(lastSlash, clip.IndexOf(".", lastSlash) - lastSlash) + ".json";
-        textJSON = AssetPath.Load<TextAsset>(metaPath);
-		bubble = JsonUtility.FromJson<Bubble>(textJSON.text) ;
+        textJSON = AssetPath.Load<TextAsset>(meta);
+		bubble = JsonUtility.FromJson<Bubble>(textJSON.text);
+		clipCount = bubble.count;
+	}
+
+	private string GetClipPath(int count)
+	{
+		int lastSlash = meta.Length - Reverse(meta).IndexOf("/");
+		string path = meta.Substring(0, lastSlash) + bubble.bubble[count].audio;
+		return path;
 	}
 
 	public static string Reverse(string s)
@@ -122,9 +127,21 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 	}
 
+	private void UpdateClipText()
+	{
+		currentClip = AssetPath.Load<AudioClip>(GetClipPath(currentClipCount));
+		currentText = bubble.bubble[currentClipCount].speech;
+	}
+
 	public void PlayBubble()
 	{
+		UpdateClipText();
+		audioSource.clip = currentClip;
+		textBox.text = currentText;
+
 		textBox.enabled = true;
 		audioSource.Play();
+
+		currentClipCount++;
 	}
 }

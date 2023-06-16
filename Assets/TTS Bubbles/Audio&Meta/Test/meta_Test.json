@@ -1,0 +1,18 @@
+{
+    "bubble": [
+        {
+            "speech": "Hello this is test 0",
+            "audio": "Test0.wav"
+        },
+        {
+            "speech": "Hello this is test 1",
+            "audio": "Test1.wav"
+        },
+        {
+            "speech": "Hello this is test 2",
+            "audio": "Test2.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/tacotron2-DDC",
+    "count": 3
+}
