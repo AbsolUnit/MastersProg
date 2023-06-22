@@ -9,6 +9,7 @@ using UnityEditor.ShaderGraph.Serialization;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
+[ExecuteInEditMode]
 public class SpeechBubbleGen : MonoBehaviour
 {
     public Bubble bubble;
@@ -17,24 +18,35 @@ public class SpeechBubbleGen : MonoBehaviour
     [AssetPath.Attribute(typeof(TextAsset))]
     public string meta;
 
-	public int indx;
+	public int indxColl;
+	public int indxKey;
 	public GameObject colliderParent;
 	public Collider2D available2DCollider;
 	public Collider available3DCollider;
+	public bool customButtonInput;
+	public string progressButton;
 
 	private AudioClip currentClip;
 	private string currentText;
 	private int clipCount;
-	private int currentClipCount = 0;
+	private int currentBubbleIndx;
+	private bool bubbleOn;
     private TextAsset textJSON;
     private TextMeshPro textBox;
     private AudioSource audioSource;
 
 	public void Generate()
     {
-		UpdateClipText();
-
-        if (trigger == TriggerType.Awake)
+		audioSource = GetComponent<AudioSource>();
+		textBox = GetComponent<TextMeshPro>();
+		UpdateClipText(0);
+		
+		if (trigger == TriggerType.Function)
+		{
+			textBox.enabled = false;
+			audioSource.playOnAwake = false;
+		}
+		else if (trigger == TriggerType.Awake)
         {
 			textBox.enabled = true;
 			audioSource.playOnAwake = true;
@@ -105,6 +117,30 @@ public class SpeechBubbleGen : MonoBehaviour
 		textBox = GetComponent<TextMeshPro>();
 	}
 
+	private void Update()
+	{
+		if (bubbleOn)
+		{
+			if (progressButton != "None" && progressButton != "")
+			{
+				if (Input.GetKeyDown(progressButton.ToLower()))
+				{
+					if (currentBubbleIndx < clipCount)
+					{
+						PlayBubble(currentBubbleIndx + 1);
+					}
+					else
+					{
+						currentBubbleIndx = 0;
+						textBox.enabled = false;
+						audioSource.Stop();
+						bubbleOn = false;
+					}
+				}
+			}
+		}
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (trigger == TriggerType.Collider2D)
@@ -112,6 +148,20 @@ public class SpeechBubbleGen : MonoBehaviour
 			if (collision == available2DCollider)
 			{
 				PlayBubble();
+				bubbleOn = true;
+			}
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (trigger == TriggerType.Collider2D)
+		{
+			if (collision == available2DCollider)
+			{
+				textBox.enabled = false;
+				audioSource.Stop();
+				bubbleOn = false;
 			}
 		}
 	}
@@ -123,25 +173,57 @@ public class SpeechBubbleGen : MonoBehaviour
 			if (collision == available3DCollider)
 			{
 				PlayBubble();
+				bubbleOn = true;
 			}
 		}
 	}
 
-	private void UpdateClipText()
+	private void OnTriggerExit(Collider collision)
 	{
-		currentClip = AssetPath.Load<AudioClip>(GetClipPath(currentClipCount));
-		currentText = bubble.bubble[currentClipCount].speech;
+		if (trigger == TriggerType.Collider3D)
+		{
+			if (collision == available3DCollider)
+			{
+				textBox.enabled = false;
+				audioSource.Stop();
+				bubbleOn = false;
+			}
+		}
 	}
 
-	public void PlayBubble()
+	private void UpdateClipText(int n)
 	{
-		UpdateClipText();
+		currentClip = AssetPath.Load<AudioClip>(GetClipPath(n));
+		currentText = bubble.bubble[n].speech;
+	}
+
+	public bool PlayBubble(int num = 1)
+	{
+		bool ret;
+		if (num > clipCount)
+		{
+			num = clipCount;
+			ret = false;
+		}
+		else if (num < 1)
+		{
+			num = 1;
+			ret = false;
+		}
+		else
+		{
+			ret = true;
+		}
+
+		currentBubbleIndx = num;
+
+		UpdateClipText(num - 1);
 		audioSource.clip = currentClip;
 		textBox.text = currentText;
 
 		textBox.enabled = true;
 		audioSource.Play();
 
-		currentClipCount++;
+		return ret;
 	}
 }
