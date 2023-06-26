@@ -87,6 +87,11 @@ public class SpeechBubbleEditor : Editor
 				}
 			}
 
+			if (colliderParent.objectReferenceValue == null)
+			{
+				EditorGUILayout.HelpBox("Please select a parent for the collider, or select a different trigger option", MessageType.Warning);
+			}
+
 			EditorGUILayout.PropertyField(customButtonInput, new GUIContent("Custom Key Code Input?", "Would you like to type the KeyCode you wish?"));
 			if (customButtonInput.boolValue)
 			{
@@ -103,6 +108,10 @@ public class SpeechBubbleEditor : Editor
 		if (meta.stringValue != string.Empty)
 		{
 			generator.GetMeta();
+		}
+		else
+		{
+			EditorGUILayout.HelpBox("Please provide a valid meta data file", MessageType.Warning);
 		}
 
 		EditorGUI.indentLevel--;
