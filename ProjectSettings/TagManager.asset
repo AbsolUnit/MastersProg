@@ -47,6 +47,9 @@ TagManager:
   - name: MidForeground
     uniqueID: 2672640391
     locked: 0
+  - name: Character
+    uniqueID: 2017783993
+    locked: 0
   - name: Foreground
     uniqueID: 3928980359
     locked: 0

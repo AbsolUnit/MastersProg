@@ -115,6 +115,8 @@ public class SpeechBubbleGen : MonoBehaviour
 	{
 		audioSource = GetComponent<AudioSource>();
 		textBox = GetComponent<TextMeshPro>();
+		GetMeta();
+		Generate();
 	}
 
 	private void Update()
@@ -147,7 +149,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		{
 			if (collision == available2DCollider)
 			{
-				PlayBubble();
+				PlayBubble(1);
 				bubbleOn = true;
 			}
 		}
@@ -172,7 +174,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		{
 			if (collision == available3DCollider)
 			{
-				PlayBubble();
+				PlayBubble(1);
 				bubbleOn = true;
 			}
 		}
@@ -197,7 +199,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		currentText = bubble.bubble[n].speech;
 	}
 
-	public bool PlayBubble(int num = 1)
+	public bool PlayBubble(int num)
 	{
 		bool ret;
 		if (num > clipCount)
@@ -217,6 +219,7 @@ public class SpeechBubbleGen : MonoBehaviour
 
 		currentBubbleIndx = num;
 
+		Debug.Log(clipCount);
 		UpdateClipText(num - 1);
 		audioSource.clip = currentClip;
 		textBox.text = currentText;
