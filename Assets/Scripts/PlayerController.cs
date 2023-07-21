@@ -22,17 +22,16 @@ namespace ClearSky
             anim = GetComponent<Animator>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             Restart();
             if (alive)
             {
-                Hurt();
+				Jump();
+				Run();
+				Hurt();
                 Die();
                 Attack();
-                Jump();
-                Run();
-
             }
         }
         private void OnTriggerEnter2D(Collider2D other)
