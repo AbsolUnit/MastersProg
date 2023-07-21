@@ -825,8 +825,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Warped
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a54c1402fede4fd42b2ebb9d5378ee11, type: 2}
-  m_sharedMaterial: {fileID: 4758645374672854840, guid: a54c1402fede4fd42b2ebb9d5378ee11, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4c1c82950346c1c4184dbf66115912d9, type: 2}
+  m_sharedMaterial: {fileID: 5578301112035885724, guid: 4c1c82950346c1c4184dbf66115912d9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -915,7 +915,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4758645374672854840, guid: a54c1402fede4fd42b2ebb9d5378ee11, type: 2}
+  - {fileID: 5578301112035885724, guid: 4c1c82950346c1c4184dbf66115912d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

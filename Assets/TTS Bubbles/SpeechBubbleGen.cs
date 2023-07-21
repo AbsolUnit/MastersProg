@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 using System.Reflection;
 using UnityEditor.ShaderGraph.Serialization;
 
@@ -25,6 +26,7 @@ public class SpeechBubbleGen : MonoBehaviour
 	public Collider available3DCollider;
 	public bool customButtonInput;
 	public string progressButton;
+	public AudioMixerGroup audioMixer;
 
 	private AudioClip currentClip;
 	private string currentText;
@@ -38,6 +40,7 @@ public class SpeechBubbleGen : MonoBehaviour
 	public void Generate()
     {
 		audioSource = GetComponent<AudioSource>();
+		audioSource.outputAudioMixerGroup = audioMixer;
 		textBox = GetComponent<TextMeshPro>();
 		UpdateClipText(0);
 		

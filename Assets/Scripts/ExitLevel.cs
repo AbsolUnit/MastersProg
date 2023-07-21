@@ -22,4 +22,14 @@ public class ExitLevel : MonoBehaviour
 			exitMenu.SetActive(false);
 		}
 	}
+
+	public void ExitGame()
+	{
+		Application.Quit();
+	}
+
+	public void GoBack()
+	{
+		exitMenu.SetActive(false);
+	}
 }
