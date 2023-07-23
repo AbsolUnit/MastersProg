@@ -23,6 +23,7 @@ public class SpeechBubbleEditor : Editor
 	private SerializedProperty customButtonInput; //bool
 	private SerializedProperty progressButton; //string
 	private SerializedProperty bubble; //Bubble
+	private SerializedProperty clipCount; //int
 	private SerializedProperty trigger; //TriggerType
 	private SerializedProperty meta; //string
 	private SerializedProperty audioClip; //AudioClip
@@ -32,6 +33,7 @@ public class SpeechBubbleEditor : Editor
 	private SerializedProperty textBox; //TextMeshPro
 	private SerializedProperty audioSource; //AudioSource
 	private SerializedProperty audioMixer; //AudioMixerGroup
+	private SerializedProperty clips; //Array
 
 	private void OnEnable()
 	{
@@ -40,6 +42,7 @@ public class SpeechBubbleEditor : Editor
 		customButtonInput = serializedObject.FindProperty("customButtonInput");
 		progressButton = serializedObject.FindProperty("progressButton");
 		bubble = serializedObject.FindProperty("bubble");
+		clipCount = serializedObject.FindProperty("clipCount");
 		trigger = serializedObject.FindProperty("trigger");
 		meta = serializedObject.FindProperty("meta");
 		audioClip = serializedObject.FindProperty("audioClip");
@@ -49,6 +52,7 @@ public class SpeechBubbleEditor : Editor
 		textBox = serializedObject.FindProperty("textBox");
 		audioSource = serializedObject.FindProperty("audioSource");
 		audioMixer = serializedObject.FindProperty("audioMixer");
+		clips = serializedObject.FindProperty("clips");
 		GetKeyCodes();
 	}
 
@@ -106,11 +110,11 @@ public class SpeechBubbleEditor : Editor
 				progressButton.stringValue = keyCodes[indxKey.intValue];
 			}
 		}
-		serializedObject.ApplyModifiedProperties();
 
-		if (meta.stringValue != string.Empty)
+		if (meta != null)
 		{
-			generator.GetMeta();
+			GetMeta();
+			GatherClips();
 		}
 		else
 		{
@@ -135,10 +139,49 @@ public class SpeechBubbleEditor : Editor
 		GUILayout.Space(Screen.width/2 - buttonWidth/2);
 		if (GUILayout.Button("Generate Speech Bubble", GUILayout.Width(buttonWidth), GUILayout.Height(25)))
 		{
+			GetMeta();
+			GatherClips();
+			serializedObject.ApplyModifiedProperties();
+			UnityEngine.Debug.Log(generator.clips.Length);
 			generator.Generate();
 		}
 		EditorGUILayout.EndHorizontal();
 
+		serializedObject.ApplyModifiedProperties();
+
+	}
+
+	void GetMeta()
+	{
+		bubble.SetUnderlyingValue(new Bubble());
+		bubble.SetUnderlyingValue(JsonUtility.FromJson<Bubble>(((TextAsset)meta.GetUnderlyingValue()).text));
+		clipCount.intValue = ((Bubble)bubble.GetUnderlyingValue()).count;
+	}
+
+	void GatherClips()
+	{
+		List<AudioClip> temp = new List<AudioClip>();
+		for(int i=0; i< generator.clipCount; i++)
+		{
+			AudioClip clip = (AudioClip)AssetDatabase.LoadAssetAtPath(GetClipPath(i), typeof(AudioClip));
+			temp.Add(clip);
+		}
+		clips.SetUnderlyingValue(temp.ToArray());
+	}
+
+	string GetClipPath(int count)
+	{
+		string metaPath = AssetDatabase.GetAssetPath(generator.meta);
+		int lastSlash = metaPath.Length - Reverse(metaPath).IndexOf("/");
+		string path = metaPath.Substring(0, lastSlash) + generator.bubble.bubble[count].audio;
+		return path;
+	}
+
+	static string Reverse(string s)
+	{
+		char[] charArray = s.ToCharArray();
+		Array.Reverse(charArray);
+		return new string(charArray);
 	}
 
 	void ReadOnlyTextField(bool area, GUIContent label, string text, float height = 40)

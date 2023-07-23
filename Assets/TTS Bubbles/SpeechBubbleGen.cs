@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEditor;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -9,10 +10,10 @@ using UnityEngine.Audio;
 public class SpeechBubbleGen : MonoBehaviour
 {
     public Bubble bubble;
-    public TriggerType trigger = TriggerType.Awake;
+	public int clipCount;
+	public TriggerType trigger = TriggerType.Awake;
 
-    [AssetPath.Attribute(typeof(TextAsset))]
-    public string meta;
+    public TextAsset meta;
 
 	public int indxColl;
 	public int indxKey;
@@ -22,13 +23,12 @@ public class SpeechBubbleGen : MonoBehaviour
 	public bool customButtonInput;
 	public string progressButton;
 	public AudioMixerGroup audioMixer;
+	public AudioClip[] clips;
 
 	private AudioClip currentClip;
 	private string currentText;
-	private int clipCount;
 	private int currentBubbleIndx;
 	private bool bubbleOn;
-    private TextAsset textJSON;
     private TextMeshPro textBox;
     private AudioSource audioSource;
 
@@ -87,33 +87,10 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 	}
 
-	public void GetMeta()
-    {
-        bubble = new Bubble();
-        textJSON = AssetPath.Load<TextAsset>(meta);
-		bubble = JsonUtility.FromJson<Bubble>(textJSON.text);
-		clipCount = bubble.count;
-	}
-
-	private string GetClipPath(int count)
-	{
-		int lastSlash = meta.Length - Reverse(meta).IndexOf("/");
-		string path = meta.Substring(0, lastSlash) + bubble.bubble[count].audio;
-		return path;
-	}
-
-	public static string Reverse(string s)
-	{
-		char[] charArray = s.ToCharArray();
-		Array.Reverse(charArray);
-		return new string(charArray);
-	}
-
 	private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
 		textBox = GetComponent<TextMeshPro>();
-		GetMeta();
 		Generate();
 	}
 
@@ -193,8 +170,10 @@ public class SpeechBubbleGen : MonoBehaviour
 
 	private void UpdateClipText(int n)
 	{
-		currentClip = AssetPath.Load<AudioClip>(GetClipPath(n));
+		currentClip = clips[n];
 		currentText = bubble.bubble[n].speech;
+		audioSource.clip = currentClip;
+		textBox.text = currentText;
 	}
 
 	public bool PlayBubble(int num)
@@ -217,10 +196,7 @@ public class SpeechBubbleGen : MonoBehaviour
 
 		currentBubbleIndx = num;
 
-		Debug.Log(clipCount);
 		UpdateClipText(num - 1);
-		audioSource.clip = currentClip;
-		textBox.text = currentText;
 
 		textBox.enabled = true;
 		audioSource.Play();

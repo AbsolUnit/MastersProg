@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1290,6 +1290,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c614ada89234b53ae1ebf50754a5bf, type: 3}
+--- !u!1 &93371695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93371696}
+  - component: {fileID: 93371697}
+  m_Layer: 0
+  m_Name: AudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &93371696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93371695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &93371697
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93371695}
+  m_Enabled: 1
 --- !u!4 &101347919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3043047233231422153, guid: 38f418b71dede45b6903fd7a74ac15aa, type: 3}
@@ -6819,7 +6859,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   m_Layer: 0
@@ -6829,14 +6868,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6924,7 +6955,8 @@ Transform:
   m_LocalPosition: {x: -10.854515, y: 1.4912062, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 93371696}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12583,8 +12615,9 @@ MonoBehaviour:
       audio: Test2.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
     count: 3
+  clipCount: 3
   trigger: 2
-  meta: Assets/TTS Bubbles/Audio&Meta/Test/meta_Test.json
+  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -12593,6 +12626,10 @@ MonoBehaviour:
   customButtonInput: 0
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
+  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
 --- !u!82 &892688004
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12603,7 +12640,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 480a2195a4c24b64e9278f669b84a349, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -12709,7 +12746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hello 1
+  m_text: Hello this is test 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18177,8 +18214,9 @@ MonoBehaviour:
       audio: Test2.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
     count: 3
+  clipCount: 3
   trigger: 2
-  meta: Assets/TTS Bubbles/Audio&Meta/Test/meta_Test.json
+  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -18187,6 +18225,10 @@ MonoBehaviour:
   customButtonInput: 0
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
+  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
 --- !u!82 &1225573276
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18197,7 +18239,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 480a2195a4c24b64e9278f669b84a349, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -18303,7 +18345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hello 1
+  m_text: Hello this is test 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24084,8 +24126,8 @@ Transform:
   - {fileID: 591511338}
   - {fileID: 2034817066}
   - {fileID: 1844661687}
-  - {fileID: 2394383132063469650}
   - {fileID: 1638802322}
+  - {fileID: 2394383132063469650}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28623,8 +28665,9 @@ MonoBehaviour:
       audio: Test2.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
     count: 3
+  clipCount: 3
   trigger: 2
-  meta: Assets/TTS Bubbles/Audio&Meta/Test/meta_Test.json
+  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -28633,6 +28676,10 @@ MonoBehaviour:
   customButtonInput: 0
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
+  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
 --- !u!82 &1859396464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -28643,7 +28690,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 480a2195a4c24b64e9278f669b84a349, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -28749,7 +28796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hello 1
+  m_text: Hello this is test 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31520,8 +31567,9 @@ MonoBehaviour:
       audio: Test2.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
     count: 3
+  clipCount: 3
   trigger: 2
-  meta: Assets/TTS Bubbles/Audio&Meta/Test/meta_Test.json
+  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -31530,6 +31578,10 @@ MonoBehaviour:
   customButtonInput: 0
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
+  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
 --- !u!82 &1998901023
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31540,7 +31592,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -31646,7 +31698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is a test
+  m_text: Hello this is test 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33338,14 +33390,120 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
   m_PrefabInstance: {fileID: 7142272779757749876}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &2394383132063469652
-AudioListener:
+--- !u!114 &2394383132063469654
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022268064}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b259a477e395441b01fb7e56ddd22e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepSounds:
+  - {fileID: 8300000, guid: b9b02f0f4f91a2d46930b2c361867781, type: 3}
+  - {fileID: 8300000, guid: 79f72fdb652fd634cb2c7c92e4e7f1e5, type: 3}
+  - {fileID: 8300000, guid: 1c388ec5ea0a162498266782c2d70c8c, type: 3}
+  - {fileID: 8300000, guid: 1f36c1c8c47653747b4ed20593d602b1, type: 3}
+  - {fileID: 8300000, guid: 3f482b61d100d944fa7df67454671fe7, type: 3}
+--- !u!82 &2394383132063469655
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022268064}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1.1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &2728017148475251174 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5303581562181440272, guid: 573d3956aa51041a4905113ea0f10c40, type: 3}
@@ -33396,7 +33554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33404,7 +33562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: 0.21999997
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalPosition.z
