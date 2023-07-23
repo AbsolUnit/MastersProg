@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
-using System.Reflection;
-using UnityEditor.ShaderGraph.Serialization;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -114,7 +109,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		return new string(charArray);
 	}
 
-	private void Awake()
+	private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
 		textBox = GetComponent<TextMeshPro>();
