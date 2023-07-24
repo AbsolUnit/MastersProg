@@ -24,6 +24,7 @@ public class SpeechBubbleGen : MonoBehaviour
 	public string progressButton;
 	public AudioMixerGroup audioMixer;
 	public AudioClip[] clips;
+	public GameObject visuals;
 
 	private AudioClip currentClip;
 	private string currentText;
@@ -91,6 +92,7 @@ public class SpeechBubbleGen : MonoBehaviour
 	{
 		audioSource = GetComponent<AudioSource>();
 		textBox = GetComponent<TextMeshPro>();
+		visuals.SetActive(false);
 		Generate();
 	}
 
@@ -110,6 +112,7 @@ public class SpeechBubbleGen : MonoBehaviour
 					{
 						currentBubbleIndx = 0;
 						textBox.enabled = false;
+						visuals.SetActive(false);
 						audioSource.Stop();
 						bubbleOn = false;
 					}
@@ -199,6 +202,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		UpdateClipText(num - 1);
 
 		textBox.enabled = true;
+		visuals.SetActive(true);
 		audioSource.Play();
 
 		return ret;
