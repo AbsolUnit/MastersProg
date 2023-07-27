@@ -3,6 +3,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
 using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -12,6 +15,12 @@ public class SpeechBubbleGen : MonoBehaviour
     public Bubble bubble;
 	public int clipCount;
 	public TriggerType trigger = TriggerType.Awake;
+	public bool animateText;
+	public float fontSize;
+	public List<string> order;
+
+	public bool childOp;
+	public SpeechBubbleGen child;
 
     public TextAsset meta;
 
@@ -39,7 +48,27 @@ public class SpeechBubbleGen : MonoBehaviour
 		audioSource.outputAudioMixerGroup = audioMixer;
 		textBox = GetComponent<TextMeshPro>();
 		UpdateClipText(0);
-		
+		int childCount = 0;
+		if (childOp && child != null)
+		{
+			childCount = child.order.Count;
+		}
+		if (order.Count != (clipCount + childCount))
+		{
+			order = new List<string>();
+			for (int i = 0; i < clipCount; i++)
+			{
+				order.Add(i.ToString());
+			}
+			if (childCount != 0)
+			{
+				child.Generate();
+				foreach (var bubble in child.order)
+				{
+					order.Add("Child" + bubble.ToString());
+				}
+			}
+		}
 		if (trigger == TriggerType.Function)
 		{
 			textBox.enabled = false;
@@ -104,69 +133,30 @@ public class SpeechBubbleGen : MonoBehaviour
 			{
 				if (Input.GetKeyDown(progressButton.ToLower()))
 				{
-					if (currentBubbleIndx < clipCount)
+					if (currentBubbleIndx < order.Count - 1)
 					{
 						PlayBubble(currentBubbleIndx + 1);
 					}
 					else
 					{
-						currentBubbleIndx = 0;
-						textBox.enabled = false;
-						visuals.SetActive(false);
-						audioSource.Stop();
-						bubbleOn = false;
+						SpeechBubbleGen p = this;
+						while (p.childOp && p.child != null)
+						{
+							p.currentBubbleIndx = 0;
+							p.textBox.enabled = false;
+							p.visuals.SetActive(false);
+							p.audioSource.Stop();
+							p.bubbleOn = false;
+							SpeechBubbleGen c = p.child;
+							c.currentBubbleIndx = 0;
+							c.textBox.enabled = false;
+							c.visuals.SetActive(false);
+							c.audioSource.Stop();
+							c.bubbleOn = false;
+							p = c;
+						}
 					}
 				}
-			}
-		}
-	}
-
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (trigger == TriggerType.Collider2D)
-		{
-			if (collision == available2DCollider)
-			{
-				PlayBubble(1);
-				bubbleOn = true;
-			}
-		}
-	}
-
-	private void OnTriggerExit2D(Collider2D collision)
-	{
-		if (trigger == TriggerType.Collider2D)
-		{
-			if (collision == available2DCollider)
-			{
-				textBox.enabled = false;
-				audioSource.Stop();
-				bubbleOn = false;
-			}
-		}
-	}
-
-	private void OnTriggerEnter(Collider collision)
-	{
-		if (trigger == TriggerType.Collider3D)
-		{
-			if (collision == available3DCollider)
-			{
-				PlayBubble(1);
-				bubbleOn = true;
-			}
-		}
-	}
-
-	private void OnTriggerExit(Collider collision)
-	{
-		if (trigger == TriggerType.Collider3D)
-		{
-			if (collision == available3DCollider)
-			{
-				textBox.enabled = false;
-				audioSource.Stop();
-				bubbleOn = false;
 			}
 		}
 	}
@@ -182,14 +172,14 @@ public class SpeechBubbleGen : MonoBehaviour
 	public bool PlayBubble(int num)
 	{
 		bool ret;
-		if (num > clipCount)
+		if (num > order.Count - 1)
 		{
-			num = clipCount;
+			num = order.Count - 1;
 			ret = false;
 		}
-		else if (num < 1)
+		else if (num < 0)
 		{
-			num = 1;
+			num = 0;
 			ret = false;
 		}
 		else
@@ -197,14 +187,113 @@ public class SpeechBubbleGen : MonoBehaviour
 			ret = true;
 		}
 
+		string bubb = order[num];
+		int indx = int.Parse(bubb.Substring(bubb.Length - 1));
+
 		currentBubbleIndx = num;
 
-		UpdateClipText(num - 1);
+		if (bubb.Contains("Child"))
+		{
+			int level = Regex.Matches(bubb, "Child").Count;
+			SpeechBubbleGen p = this;
+			for (int i=0; i<level; i++)
+			{
+				SpeechBubbleGen c = p.child;
+				p = c;
+			}
+			p.PlayBubble(indx);
+			return ret;
+		}
 
-		textBox.enabled = true;
+		UpdateClipText(indx);
+		
+		if (!animateText)
+		{
+			textBox.enabled = true;
+		}
+		else
+		{
+			StartCoroutine(TextAnimation(num));
+		}
+		
 		visuals.SetActive(true);
 		audioSource.Play();
 
 		return ret;
+	}
+
+	private IEnumerator TextAnimation(int indx)
+	{
+		string text = textBox.text;
+		float length = audioSource.clip.length;
+		float secPerChar = (length / text.Length);
+		textBox.text = "";
+		textBox.enableAutoSizing = false;
+		textBox.fontSize = fontSize;
+		textBox.enabled = true;
+		foreach (char letter in text)
+		{
+			if (indx == currentBubbleIndx) {
+				textBox.text += letter;
+				yield return new WaitForSeconds(secPerChar);
+			}
+			else
+			{
+				textBox.text = text;
+				break;
+			}
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (trigger == TriggerType.Collider2D)
+		{
+			if (collision == available2DCollider)
+			{
+				PlayBubble(0);
+				bubbleOn = true;
+			}
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (trigger == TriggerType.Collider2D)
+		{
+			if (collision == available2DCollider)
+			{
+				textBox.enabled = false;
+				visuals.SetActive(false);
+				audioSource.Stop();
+				bubbleOn = false;
+			}
+		}
+	}
+
+	private void OnTriggerEnter(Collider collision)
+	{
+		if (trigger == TriggerType.Collider3D)
+		{
+			if (collision == available3DCollider)
+			{
+				PlayBubble(0);
+				bubbleOn = true;
+			}
+		}
+	}
+
+	private void OnTriggerExit(Collider collision)
+	{
+		if (trigger == TriggerType.Collider3D)
+		{
+			if (collision == available3DCollider)
+			{
+				textBox.enabled = false;
+				visuals.SetActive(false);
+				audioSource.Stop();
+				bubbleOn = false;
+			}
+		}
 	}
 }
