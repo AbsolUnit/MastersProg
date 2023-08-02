@@ -18,6 +18,10 @@ public class SpeechBubbleGen : MonoBehaviour
 	public bool animateText;
 	public float fontSize;
 	public List<string> order;
+	public bool loopLast;
+	public bool loopAll;
+	public bool buttonMode;
+	public bool mute;
 
 	public bool childOp;
 	public SpeechBubbleGen child;
@@ -48,26 +52,9 @@ public class SpeechBubbleGen : MonoBehaviour
 		audioSource.outputAudioMixerGroup = audioMixer;
 		textBox = GetComponent<TextMeshPro>();
 		UpdateClipText(0);
-		int childCount = 0;
-		if (childOp && child != null)
+		if (order.Count == 0)
 		{
-			childCount = child.order.Count;
-		}
-		if (order.Count != (clipCount + childCount))
-		{
-			order = new List<string>();
-			for (int i = 0; i < clipCount; i++)
-			{
-				order.Add(i.ToString());
-			}
-			if (childCount != 0)
-			{
-				child.Generate();
-				foreach (var bubble in child.order)
-				{
-					order.Add("Child" + bubble.ToString());
-				}
-			}
+			ResetOrder();
 		}
 		if (trigger == TriggerType.Function)
 		{
@@ -117,6 +104,29 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 	}
 
+	public void ResetOrder()
+	{
+		int childCount = 0;
+		if (childOp && child != null)
+		{
+			childCount = child.order.Count;
+		}
+		order = new List<string>();
+		for (int i = 0; i < clipCount; i++)
+		{
+			order.Add(i.ToString());
+		}
+		if (childCount != 0)
+		{
+			child.Generate();
+			foreach (var bubble in child.order)
+			{
+				order.Add("Child" + bubble.ToString());
+			}
+		}
+		
+	}
+
 	private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
@@ -133,30 +143,32 @@ public class SpeechBubbleGen : MonoBehaviour
 			{
 				if (Input.GetKeyDown(progressButton.ToLower()))
 				{
-					if (currentBubbleIndx < order.Count - 1)
-					{
-						PlayBubble(currentBubbleIndx + 1);
-					}
-					else
-					{
-						SpeechBubbleGen p = this;
-						while (p.childOp && p.child != null)
-						{
-							p.currentBubbleIndx = 0;
-							p.textBox.enabled = false;
-							p.visuals.SetActive(false);
-							p.audioSource.Stop();
-							p.bubbleOn = false;
-							SpeechBubbleGen c = p.child;
-							c.currentBubbleIndx = 0;
-							c.textBox.enabled = false;
-							c.visuals.SetActive(false);
-							c.audioSource.Stop();
-							c.bubbleOn = false;
-							p = c;
-						}
-					}
+					NextBubble();
 				}
+			}
+		}
+	}
+
+	public void NextBubble()
+	{
+		if (currentBubbleIndx < order.Count - 1)
+		{
+			PlayBubble(currentBubbleIndx + 1);
+		}
+		else
+		{
+			if (loopLast)
+			{
+				PlayBubble(currentBubbleIndx);
+			}
+            else if (loopAll)
+            {
+				PlayBubble(0);
+            }
+
+            else
+			{
+				TurnOff();
 			}
 		}
 	}
@@ -202,6 +214,13 @@ public class SpeechBubbleGen : MonoBehaviour
 				p = c;
 			}
 			p.PlayBubble(indx);
+			if (buttonMode && p.animateText)
+			{
+				StartCoroutine(WaitNext());
+			}else if (buttonMode)
+			{
+				NextBubble();
+			}
 			return ret;
 		}
 
@@ -217,9 +236,18 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 		
 		visuals.SetActive(true);
-		audioSource.Play();
-
+		if (!mute)
+		{
+			audioSource.Play();
+		}
+		
 		return ret;
+	}
+
+	private IEnumerator WaitNext()
+	{
+		yield return new WaitForSeconds(audioSource.clip.length + 1);
+		NextBubble();
 	}
 
 	private IEnumerator TextAnimation(int indx)
@@ -263,10 +291,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		{
 			if (collision == available2DCollider)
 			{
-				textBox.enabled = false;
-				visuals.SetActive(false);
-				audioSource.Stop();
-				bubbleOn = false;
+				TurnOff();
 			}
 		}
 	}
@@ -289,11 +314,28 @@ public class SpeechBubbleGen : MonoBehaviour
 		{
 			if (collision == available3DCollider)
 			{
-				textBox.enabled = false;
-				visuals.SetActive(false);
-				audioSource.Stop();
-				bubbleOn = false;
+				TurnOff();
 			}
+		}
+	}
+
+	public void TurnOff()
+	{
+		SpeechBubbleGen p = this;
+		while (p.childOp && p.child != null)
+		{
+			p.currentBubbleIndx = 0;
+			p.textBox.enabled = false;
+			p.visuals.SetActive(false);
+			p.audioSource.Stop();
+			p.bubbleOn = false;
+			SpeechBubbleGen c = p.child;
+			c.currentBubbleIndx = 0;
+			c.textBox.enabled = false;
+			c.visuals.SetActive(false);
+			c.audioSource.Stop();
+			c.bubbleOn = false;
+			p = c;
 		}
 	}
 }

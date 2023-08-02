@@ -6,10 +6,11 @@ namespace ClearSky
     {
         public float movePower = 10f;
         public float jumpPower = 15f; //Set Gravity Scale in Rigidbody2D Component to 5
+        public GameObject wizard;
 
         private Rigidbody2D rb;
         private Animator anim;
-        private float scale = 0.4f;
+        private float scale = 1f;
         private float direction = 1;
         bool isJumping = false;
         private bool alive = true;
@@ -19,12 +20,11 @@ namespace ClearSky
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            anim = GetComponent<Animator>();
+            anim = wizard.GetComponent<Animator>();
         }
 
         private void FixedUpdate()
         {
-            Restart();
             if (alive)
             {
 				Jump();
@@ -33,7 +33,8 @@ namespace ClearSky
                 Die();
                 Attack();
             }
-        }
+			Restart();
+		}
         private void OnTriggerEnter2D(Collider2D other)
         {
             anim.SetBool("isJump", false);
@@ -51,7 +52,7 @@ namespace ClearSky
                 direction = - scale;
                 moveVelocity = Vector3.left;
 
-                transform.localScale = new Vector3(direction, scale, scale);
+				wizard.transform.localScale = new Vector3(direction, scale, scale);
                 if (!anim.GetBool("isJump"))
                     anim.SetBool("isRun", true);
 
@@ -61,12 +62,12 @@ namespace ClearSky
                 direction = scale;
                 moveVelocity = Vector3.right;
 
-                transform.localScale = new Vector3(direction, scale, scale);
+				wizard.transform.localScale = new Vector3(direction, scale, scale);
                 if (!anim.GetBool("isJump"))
                     anim.SetBool("isRun", true);
 
             }
-            transform.position += moveVelocity * movePower * Time.deltaTime;
+			transform.position += moveVelocity * movePower * Time.deltaTime;
         }
         void Jump()
         {
@@ -84,7 +85,7 @@ namespace ClearSky
             rb.velocity = Vector2.zero;
 
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
-            rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+			rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
 
             isJumping = false;
         }
