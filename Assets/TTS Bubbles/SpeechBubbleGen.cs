@@ -6,6 +6,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -21,7 +22,10 @@ public class SpeechBubbleGen : MonoBehaviour
 	public bool loopLast;
 	public bool loopAll;
 	public bool buttonMode;
+	public Button button;
 	public bool mute;
+	public bool oneTime;
+	public bool autoPlay;
 
 	public bool childOp;
 	public SpeechBubbleGen child;
@@ -157,6 +161,12 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 		else
 		{
+			if (oneTime)
+			{
+				TurnOff();
+				this.gameObject.SetActive(false);
+			}
+
 			if (loopLast)
 			{
 				PlayBubble(currentBubbleIndx);
@@ -183,6 +193,11 @@ public class SpeechBubbleGen : MonoBehaviour
 
 	public bool PlayBubble(int num)
 	{
+		if (buttonMode)
+		{
+			button.enabled = false;
+		}
+
 		bool ret;
 		if (num > order.Count - 1)
 		{
@@ -214,12 +229,15 @@ public class SpeechBubbleGen : MonoBehaviour
 				p = c;
 			}
 			p.PlayBubble(indx);
-			if (buttonMode && p.animateText)
+
+			if (buttonMode || autoPlay)
 			{
 				StartCoroutine(WaitNext());
-			}else if (buttonMode)
+			}
+			else if (oneTime)
 			{
-				NextBubble();
+				TurnOff();
+				this.gameObject.SetActive(false);
 			}
 			return ret;
 		}
@@ -229,6 +247,19 @@ public class SpeechBubbleGen : MonoBehaviour
 		if (!animateText)
 		{
 			textBox.enabled = true;
+			if (buttonMode)
+			{
+				button.enabled = true;
+			}
+			if (autoPlay)
+			{
+				StartCoroutine(WaitNext());
+			}
+			else if (oneTime)
+			{
+				TurnOff();
+				this.gameObject.SetActive(false);
+			}
 		}
 		else
 		{
@@ -270,6 +301,20 @@ public class SpeechBubbleGen : MonoBehaviour
 				textBox.text = text;
 				break;
 			}
+		}
+		if (buttonMode)
+		{
+			button.enabled = true;
+		}
+		if (autoPlay)
+		{
+			yield return new WaitForSeconds(1);
+			NextBubble();
+		}
+		else if (oneTime)
+		{
+			TurnOff();
+			this.enabled = false;
 		}
 	}
 

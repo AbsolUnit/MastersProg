@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.TerrainTools;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [CustomEditor(typeof(SpeechBubbleGen))]
@@ -43,7 +44,10 @@ public class SpeechBubbleEditor : Editor
 	private SerializedProperty loopLast; //bool
 	private SerializedProperty loopAll; //bool
 	private SerializedProperty buttonMode; //bool
+	private SerializedProperty button; //Button
 	private SerializedProperty mute; //bool
+	private SerializedProperty oneTime; //bool
+	private SerializedProperty autoPlay; //bool
 
 	private void OnEnable()
 	{
@@ -72,7 +76,10 @@ public class SpeechBubbleEditor : Editor
 		loopLast = serializedObject.FindProperty("loopLast");
 		loopAll = serializedObject.FindProperty("loopAll");
 		buttonMode = serializedObject.FindProperty("buttonMode");
+		button = serializedObject.FindProperty("button");
 		mute = serializedObject.FindProperty("mute");
+		oneTime = serializedObject.FindProperty("oneTime");
+		autoPlay = serializedObject.FindProperty("autoPlay");
 		GetKeyCodes();
 	}
 
@@ -96,9 +103,12 @@ public class SpeechBubbleEditor : Editor
 
 		EditorGUILayout.PropertyField(audioMixer, new GUIContent("Audio Mixer", "The desired output audio mixer group"));
 		EditorGUILayout.PropertyField(visuals, new GUIContent("Visuals", "The art for the speech bubble"));
+
+		EditorGUILayout.Space(10);
+
+		EditorGUILayout.PropertyField(oneTime, new GUIContent("Play once", "Will disable bubble then finished playing, or finished order if combined with autoplay"));
+		EditorGUILayout.PropertyField(autoPlay, new GUIContent("Auto Play", "Will automatically play the bubble until finished or stopped"));
 		EditorGUILayout.PropertyField(animateText, new GUIContent("Animate Text", "Do you want to use animated text?"));
-		EditorGUILayout.PropertyField(buttonMode, new GUIContent("Button Mode", "This will play all bubles marked 'Child' automatically"));
-		EditorGUILayout.PropertyField(mute, new GUIContent("Mute Audio", "Do you with to mute the audio of this bubble?"));
 		EditorGUI.indentLevel++;
 
 		if (animateText.boolValue == true)
@@ -107,6 +117,17 @@ public class SpeechBubbleEditor : Editor
 		}
 
 		EditorGUI.indentLevel--;
+		EditorGUILayout.PropertyField(buttonMode, new GUIContent("Button Mode", "This will play all bubbles marked 'Child' automatically"));
+		if (buttonMode.boolValue)
+		{
+			EditorGUILayout.PropertyField(button, new GUIContent("Button", "The Button that with activate the NextBubble() function"));
+			if (!(Button)button.GetUnderlyingValue())
+			{
+				EditorGUILayout.HelpBox("Please provide a valid Button", MessageType.Warning);
+			}
+		}
+		EditorGUILayout.PropertyField(mute, new GUIContent("Mute Audio", "Do you with to mute the audio of this bubble?"));
+		
 
 		EditorGUILayout.PropertyField(childOp, new GUIContent("Optional Child", "Do you wish to link another bubble to this one?"));
 		EditorGUI.indentLevel++;
