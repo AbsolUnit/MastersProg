@@ -25,7 +25,6 @@ public class SpeechBubbleGen : MonoBehaviour
 	public Button[] buttons;
 	public bool mute;
 	public bool oneTime;
-	public GameObject pausePlayer;
 	public bool autoPlay;
 	public bool bubbleOn;
 
