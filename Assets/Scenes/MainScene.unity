@@ -157,19 +157,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -177,11 +177,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010464396976, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012882303986, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212000010422911958, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_Sprite
@@ -2003,10 +2007,12 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 0
   buttonMode: 0
-  button: {fileID: 0}
+  buttons: []
   mute: 0
   oneTime: 1
+  pausePlayer: {fileID: 0}
   autoPlay: 1
+  bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -2468,10 +2474,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 472389138}
+  buttons:
+  - {fileID: 472389138}
+  - {fileID: 1610407238}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 892688003}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -4102,7 +4112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5243,7 +5253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5274,7 +5284,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1568578992}
+      - m_Target: {fileID: 1653705485}
         m_TargetAssemblyTypeName: SpeechBubbleGen, Assembly-CSharp
         m_MethodName: NextBubble
         m_Mode: 1
@@ -6313,7 +6323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -6344,7 +6354,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1702461146}
+      - m_Target: {fileID: 1366050363}
         m_TargetAssemblyTypeName: SpeechBubbleGen, Assembly-CSharp
         m_MethodName: NextBubble
         m_Mode: 1
@@ -7617,7 +7627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7648,7 +7658,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1568578992}
+      - m_Target: {fileID: 154830393}
         m_TargetAssemblyTypeName: SpeechBubbleGen, Assembly-CSharp
         m_MethodName: NextBubble
         m_Mode: 1
@@ -9487,7 +9497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -9518,7 +9528,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1568578992}
+      - m_Target: {fileID: 1540339564}
         m_TargetAssemblyTypeName: SpeechBubbleGen, Assembly-CSharp
         m_MethodName: NextBubble
         m_Mode: 1
@@ -10883,10 +10893,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 636975788}
+  buttons:
+  - {fileID: 636975788}
+  - {fileID: 282627799}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 1225573275}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -11222,7 +11236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -11253,7 +11267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1702461146}
+      - m_Target: {fileID: 631387501}
         m_TargetAssemblyTypeName: SpeechBubbleGen, Assembly-CSharp
         m_MethodName: NextBubble
         m_Mode: 1
@@ -11947,7 +11961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -12143,6 +12157,7 @@ MonoBehaviour:
   movePower: 6
   jumpPower: 15
   wizard: {fileID: 2022268064}
+  controlOn: 1
 --- !u!4 &681726002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2417729679588581380, guid: 746b14182f99c4b978d07f3f0e529e87, type: 3}
@@ -12252,10 +12267,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 1610407238}
+  buttons:
+  - {fileID: 1610407238}
+  - {fileID: 472389138}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 892688003}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -15499,10 +15518,12 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 0
   buttonMode: 0
-  button: {fileID: 0}
+  buttons: []
   mute: 0
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -21476,11 +21497,13 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 0
   buttonMode: 0
-  button: {fileID: 0}
+  buttons: []
   mute: 0
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
-  childOp: 1
+  bubbleOn: 0
+  childOp: 0
   child: {fileID: 0}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
   indxColl: 1
@@ -23651,7 +23674,7 @@ RectTransform:
   m_GameObject: {fileID: 1292369100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.012790345, y: 0.012790345, z: 0.012790345}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2095839969}
@@ -23661,9 +23684,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.25}
+  m_SizeDelta: {x: 1447, y: 814}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292369102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23703,7 +23726,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1292369104
 Canvas:
   m_ObjectHideFlags: 0
@@ -23713,7 +23736,7 @@ Canvas:
   m_GameObject: {fileID: 1292369100}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
@@ -24604,10 +24627,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 351243970}
+  buttons:
+  - {fileID: 351243970}
+  - {fileID: 560915067}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 1998901022}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -27940,10 +27967,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 560915067}
+  buttons:
+  - {fileID: 560915067}
+  - {fileID: 351243970}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 1998901022}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -28745,10 +28776,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 229720287}
+  buttons:
+  - {fileID: 229720287}
+  - {fileID: 676807372}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 1859396463}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -29399,7 +29434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -29430,7 +29465,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1702461146}
+      - m_Target: {fileID: 681919061}
         m_TargetAssemblyTypeName: SpeechBubbleGen, Assembly-CSharp
         m_MethodName: NextBubble
         m_Mode: 1
@@ -30254,10 +30289,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 282627799}
+  buttons:
+  - {fileID: 282627799}
+  - {fileID: 636975788}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 1225573275}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -31142,7 +31181,7 @@ GameObject:
   - component: {fileID: 1686875176}
   - component: {fileID: 1686875175}
   m_Layer: 0
-  m_Name: Timeline
+  m_Name: Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31524,10 +31563,14 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 1
   buttonMode: 1
-  button: {fileID: 676807372}
+  buttons:
+  - {fileID: 676807372}
+  - {fileID: 229720287}
   mute: 1
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 1
   child: {fileID: 1859396463}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -34315,6 +34358,8 @@ GameObject:
   - component: {fileID: 1859396465}
   - component: {fileID: 1859396464}
   - component: {fileID: 1859396463}
+  - component: {fileID: 1859396467}
+  - component: {fileID: 1859396468}
   m_Layer: 0
   m_Name: BubbleM
   m_TagString: Untagged
@@ -34376,10 +34421,12 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 0
   buttonMode: 0
-  button: {fileID: 0}
+  buttons: []
   mute: 0
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -34626,6 +34673,37 @@ MeshRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1859396467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859396460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdc2da47880e5442a2b783339bae52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitable: {fileID: 140699990}
+  bubbles:
+  - {fileID: 1859396463}
+  - {fileID: 1568578992}
+  - {fileID: 1702461146}
+--- !u!114 &1859396468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859396460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40118f8737c54ba488bb593467a5130c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 681346244}
+  bubb: {fileID: 140699990}
 --- !u!1 &1862264635
 GameObject:
   m_ObjectHideFlags: 0
@@ -37279,7 +37357,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998901020}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37287,7 +37365,7 @@ RectTransform:
   - {fileID: 1140503618}
   m_Father: {fileID: 1638802322}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.026, y: 2.24}
@@ -37326,10 +37404,12 @@ MonoBehaviour:
   loopLast: 0
   loopAll: 0
   buttonMode: 0
-  button: {fileID: 0}
+  buttons: []
   mute: 0
   oneTime: 0
+  pausePlayer: {fileID: 0}
   autoPlay: 0
+  bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
   meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
@@ -37489,7 +37569,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5.85
+  m_fontSize: 5.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

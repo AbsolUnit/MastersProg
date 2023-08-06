@@ -44,7 +44,7 @@ public class SpeechBubbleEditor : Editor
 	private SerializedProperty loopLast; //bool
 	private SerializedProperty loopAll; //bool
 	private SerializedProperty buttonMode; //bool
-	private SerializedProperty button; //Button
+	private SerializedProperty buttons; //Button[]
 	private SerializedProperty mute; //bool
 	private SerializedProperty oneTime; //bool
 	private SerializedProperty autoPlay; //bool
@@ -76,7 +76,7 @@ public class SpeechBubbleEditor : Editor
 		loopLast = serializedObject.FindProperty("loopLast");
 		loopAll = serializedObject.FindProperty("loopAll");
 		buttonMode = serializedObject.FindProperty("buttonMode");
-		button = serializedObject.FindProperty("button");
+		buttons = serializedObject.FindProperty("buttons");
 		mute = serializedObject.FindProperty("mute");
 		oneTime = serializedObject.FindProperty("oneTime");
 		autoPlay = serializedObject.FindProperty("autoPlay");
@@ -120,8 +120,8 @@ public class SpeechBubbleEditor : Editor
 		EditorGUILayout.PropertyField(buttonMode, new GUIContent("Button Mode", "This will play all bubbles marked 'Child' automatically"));
 		if (buttonMode.boolValue)
 		{
-			EditorGUILayout.PropertyField(button, new GUIContent("Button", "The Button that with activate the NextBubble() function"));
-			if (!(Button)button.GetUnderlyingValue())
+			EditorGUILayout.PropertyField(buttons, new GUIContent("Button", "The Button that activates NextBubble() and any other naffecting buttons"));
+			if (buttons.arraySize == 0)
 			{
 				EditorGUILayout.HelpBox("Please provide a valid Button", MessageType.Warning);
 			}

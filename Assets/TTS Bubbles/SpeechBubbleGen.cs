@@ -22,10 +22,12 @@ public class SpeechBubbleGen : MonoBehaviour
 	public bool loopLast;
 	public bool loopAll;
 	public bool buttonMode;
-	public Button button;
+	public Button[] buttons;
 	public bool mute;
 	public bool oneTime;
+	public GameObject pausePlayer;
 	public bool autoPlay;
+	public bool bubbleOn;
 
 	public bool childOp;
 	public SpeechBubbleGen child;
@@ -46,9 +48,12 @@ public class SpeechBubbleGen : MonoBehaviour
 	private AudioClip currentClip;
 	private string currentText;
 	private int currentBubbleIndx;
-	private bool bubbleOn;
+	
     private TextMeshPro textBox;
     private AudioSource audioSource;
+	private Vector3 pos;
+	private Quaternion rot;
+	private bool flag;
 
 	public void Generate()
     {
@@ -193,9 +198,15 @@ public class SpeechBubbleGen : MonoBehaviour
 
 	public bool PlayBubble(int num)
 	{
+		bubbleOn = true;
+		
+
 		if (buttonMode)
 		{
-			button.enabled = false;
+			foreach (Button button in buttons)
+			{
+				button.enabled = false;
+			}
 		}
 
 		bool ret;
@@ -249,7 +260,10 @@ public class SpeechBubbleGen : MonoBehaviour
 			textBox.enabled = true;
 			if (buttonMode)
 			{
-				button.enabled = true;
+				foreach (Button button in buttons)
+				{
+					button.enabled = true;
+				}
 			}
 			if (autoPlay)
 			{
@@ -304,7 +318,10 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 		if (buttonMode)
 		{
-			button.enabled = true;
+			foreach (Button button in buttons)
+			{
+				button.enabled = true;
+			}
 		}
 		if (autoPlay)
 		{
@@ -325,7 +342,17 @@ public class SpeechBubbleGen : MonoBehaviour
 			if (collision == available2DCollider)
 			{
 				PlayBubble(0);
-				bubbleOn = true;
+			}
+		}
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (trigger == TriggerType.Collider2D)
+		{
+			if (collision == available2DCollider && bubbleOn == false)
+			{
+				PlayBubble(0);
 			}
 		}
 	}
@@ -341,6 +368,8 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 	}
 
+	
+
 	private void OnTriggerEnter(Collider collision)
 	{
 		if (trigger == TriggerType.Collider3D)
@@ -348,7 +377,17 @@ public class SpeechBubbleGen : MonoBehaviour
 			if (collision == available3DCollider)
 			{
 				PlayBubble(0);
-				bubbleOn = true;
+			}
+		}
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (trigger == TriggerType.Collider3D)
+		{
+			if (other == available3DCollider && bubbleOn == false)
+			{
+				PlayBubble(0);
 			}
 		}
 	}
@@ -374,12 +413,14 @@ public class SpeechBubbleGen : MonoBehaviour
 			p.visuals.SetActive(false);
 			p.audioSource.Stop();
 			p.bubbleOn = false;
+			p.flag = false;
 			SpeechBubbleGen c = p.child;
 			c.currentBubbleIndx = 0;
 			c.textBox.enabled = false;
 			c.visuals.SetActive(false);
 			c.audioSource.Stop();
 			c.bubbleOn = false;
+			c.flag = false;
 			p = c;
 		}
 	}

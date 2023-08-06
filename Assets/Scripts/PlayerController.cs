@@ -7,14 +7,15 @@ namespace ClearSky
         public float movePower = 10f;
         public float jumpPower = 15f; //Set Gravity Scale in Rigidbody2D Component to 5
         public GameObject wizard;
+		public bool controlOn = true;
 
-        private Rigidbody2D rb;
+		private Rigidbody2D rb;
         private Animator anim;
-        private float scale = 1f;
-        private float direction = 1;
-        bool isJumping = false;
-        private bool alive = true;
+        private bool isJumping = false;
+        
 
+        private float horizontalMove;
+        private Vector3 moveVelocity;
 
         // Start is called before the first frame update
         void Start()
@@ -23,72 +24,57 @@ namespace ClearSky
             anim = wizard.GetComponent<Animator>();
         }
 
-        private void FixedUpdate()
-        {
-            if (alive)
+		private void Update()
+		{
+            if (controlOn) 
             {
-				Jump();
-				Run();
-				Hurt();
-                Die();
-                Attack();
+				horizontalMove = Input.GetAxisRaw("Horizontal");
+
+				if ((Input.GetButtonDown("Jump") || Input.GetAxis("Vertical") > 0)
+				&& !anim.GetBool("isJump"))
+				{
+					isJumping = true;
+					anim.SetBool("isJump", true);
+				}
             }
-			Restart();
+            else
+            {
+                horizontalMove = 0;
+				isJumping = false;
+				anim.SetBool("isJump", false);
+			}
+			
 		}
+
+		private void FixedUpdate()
+        {
+			moveVelocity = Vector3.zero;
+			anim.SetBool("isRun", false);
+			if (horizontalMove != 0)
+			{
+				wizard.transform.localScale = new Vector3(horizontalMove, 1, 1);
+				moveVelocity = new Vector3(horizontalMove, 0, 0);
+				transform.position += moveVelocity * movePower * Time.fixedDeltaTime;
+				if (!anim.GetBool("isJump"))
+					anim.SetBool("isRun", true);
+			}
+
+            if (isJumping)
+            {
+				rb.velocity = Vector2.zero;
+
+				Vector2 jumpVelocity = new Vector2(0, jumpPower);
+				rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+
+				isJumping = false;
+			}
+		}
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             anim.SetBool("isJump", false);
         }
 
-
-        void Run()
-        {
-            Vector3 moveVelocity = Vector3.zero;
-            anim.SetBool("isRun", false);
-
-
-            if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-                direction = - scale;
-                moveVelocity = Vector3.left;
-
-				wizard.transform.localScale = new Vector3(direction, scale, scale);
-                if (!anim.GetBool("isJump"))
-                    anim.SetBool("isRun", true);
-
-            }
-            if (Input.GetAxisRaw("Horizontal") > 0)
-            {
-                direction = scale;
-                moveVelocity = Vector3.right;
-
-				wizard.transform.localScale = new Vector3(direction, scale, scale);
-                if (!anim.GetBool("isJump"))
-                    anim.SetBool("isRun", true);
-
-            }
-			transform.position += moveVelocity * movePower * Time.deltaTime;
-        }
-        void Jump()
-        {
-            if ((Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") > 0)
-            && !anim.GetBool("isJump"))
-            {
-                isJumping = true;
-                anim.SetBool("isJump", true);
-            }
-            if (!isJumping)
-            {
-                return;
-            }
-
-            rb.velocity = Vector2.zero;
-
-            Vector2 jumpVelocity = new Vector2(0, jumpPower);
-			rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
-
-            isJumping = false;
-        }
         void Attack()
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -101,7 +87,7 @@ namespace ClearSky
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 anim.SetTrigger("hurt");
-                if (direction == 1)
+                if (horizontalMove == 1)
                     rb.AddForce(new Vector2(-5f, 1f), ForceMode2D.Impulse);
                 else
                     rb.AddForce(new Vector2(5f, 1f), ForceMode2D.Impulse);
@@ -112,7 +98,7 @@ namespace ClearSky
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 anim.SetTrigger("die");
-                alive = false;
+                
             }
         }
         void Restart()
@@ -120,7 +106,7 @@ namespace ClearSky
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 anim.SetTrigger("idle");
-                alive = true;
+               
             }
         }
     }
