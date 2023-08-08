@@ -1,0 +1,10 @@
+{
+    "bubble": [
+        {
+            "speech": "Oh hello there",
+            "audio": "PeasantQs0.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/vits--neon",
+    "count": 1
+}

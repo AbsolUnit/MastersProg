@@ -1,0 +1,10 @@
+{
+    "bubble": [
+        {
+            "speech": "What is this place?",
+            "audio": "MerchantQs0.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/vits--neon",
+    "count": 1
+}

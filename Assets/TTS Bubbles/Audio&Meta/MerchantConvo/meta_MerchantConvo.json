@@ -1,0 +1,22 @@
+{
+    "bubble": [
+        {
+            "speech": "Look lady I just work here okay?",
+            "audio": "MerchantConvo0.wav"
+        },
+        {
+            "speech": "Boom! Free wand!",
+            "audio": "MerchantConvo1.wav"
+        },
+        {
+            "speech": "Part of a new promotion!",
+            "audio": "MerchantConvo2.wav"
+        },
+        {
+            "speech": "Show up and get a free ... wand.",
+            "audio": "MerchantConvo3.wav"
+        }
+    ],
+    "model": "tts_models/en/jenny/jenny",
+    "count": 4
+}

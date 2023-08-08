@@ -232,6 +232,10 @@ PrefabInstance:
       value: -1622326905
       objectReference: {fileID: 0}
     - target: {fileID: 212000013144291688, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300092, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
+    - target: {fileID: 212000013144291688, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
@@ -1088,7 +1092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &67931673
 Transform:
   m_ObjectHideFlags: 0
@@ -1411,6 +1415,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c614ada89234b53ae1ebf50754a5bf, type: 3}
+--- !u!1001 &75298126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2394383132063469650}
+    m_Modifications:
+    - target: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_Name
+      value: msVFX_Stylized Smoke 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.671
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 107540711077034587, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 265766274217486953, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 265766274217486953, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266638105498670179, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 266638105498670179, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -365986937
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!1 &93371695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,34 +2069,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: Oh Hey!
+      audio: MerchantIntro0.wav
+    - speech: I'm sorry if I seem flusted
+      audio: MerchantIntro1.wav
+    - speech: It has been a long time since I had any customers
+      audio: MerchantIntro2.wav
+    - speech: How can I help you?
+      audio: MerchantIntro3.wav
+    model: tts_models/en/jenny/jenny
+    count: 4
+  clipCount: 4
   trigger: 2
   animateText: 1
-  fontSize: 6
+  fontSize: 3.5
   order:
   - 0
   - 1
   - 2
+  - 3
   loopLast: 0
   loopAll: 0
   buttonMode: 0
   buttons: []
   mute: 0
   oneTime: 1
-  pausePlayer: {fileID: 0}
   autoPlay: 1
   bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 5ae5aed7cbb28694baa54bffd4cdcf8c, type: 3}
   indxColl: 1
   indxKey: 0
   colliderParent: {fileID: 681346244}
@@ -2025,9 +2108,10 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: b554badbe39d03045b0b333a45958df4, type: 3}
+  - {fileID: 8300000, guid: 2eaddf578f72341418e935fabfc7e8b2, type: 3}
+  - {fileID: 8300000, guid: ca09552ccdb6b2244939ceacd5ac9da8, type: 3}
+  - {fileID: 8300000, guid: 062908a980ac0fa4f95d160f1840fa8f, type: 3}
   visuals: {fileID: 2081745518}
 --- !u!82 &140699993
 AudioSource:
@@ -2039,7 +2123,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b554badbe39d03045b0b333a45958df4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2145,7 +2229,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Oh Hey!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -2479,7 +2563,6 @@ MonoBehaviour:
   - {fileID: 1610407238}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
@@ -3202,6 +3285,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180106317}
   m_CullTransparentMesh: 1
+--- !u!1 &182322309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3581684743427378859, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+  m_PrefabInstance: {fileID: 7142272779757749876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &182705299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2697143194450042195, guid: b6d669e1ef2d84fabad0516aa3f6d164, type: 3}
@@ -10871,39 +10959,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
+    - speech: Where is everyone?
+      audio: SoldierQs20.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    count: 1
+  clipCount: 1
   trigger: 2
   animateText: 0
-  fontSize: 5
+  fontSize: 0
   order:
   - 0
-  - Child0
-  - 1
-  - Child1
-  - 2
-  - Child2
+  - Child5
+  - Child6
+  - Child7
   loopLast: 0
-  loopAll: 1
+  loopAll: 0
   buttonMode: 1
   buttons:
   - {fileID: 636975788}
   - {fileID: 282627799}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
   child: {fileID: 1225573275}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 0ad7c2df22ee364408bb590926bb6543, type: 3}
   indxColl: 0
   indxKey: 0
   colliderParent: {fileID: 1601178691}
@@ -10913,9 +10994,7 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: 4e673eb7e18c6524daf91be71b9843d2, type: 3}
   visuals: {fileID: 1300654426}
 --- !u!82 &631387502
 AudioSource:
@@ -10927,7 +11006,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4e673eb7e18c6524daf91be71b9843d2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11033,7 +11112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Where is everyone?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -12004,6 +12083,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 182322309}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 67931672}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2113976534}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &676807373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12272,7 +12387,6 @@ MonoBehaviour:
   - {fileID: 472389138}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
@@ -15521,7 +15635,6 @@ MonoBehaviour:
   buttons: []
   mute: 0
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 0
@@ -21478,34 +21591,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
+    - speech: Oh!
+      audio: SoldierConvo0.wav
+    - speech: I did not see you there.
+      audio: SoldierConvo1.wav
+    - speech: I am THE guard
+      audio: SoldierConvo2.wav
+    - speech: This places last defence!
+      audio: SoldierConvo3.wav
+    - speech: The Beast of course! You silly girl.
+      audio: SoldierConvo4.wav
+    - speech: Do you not know?
+      audio: SoldierConvo5.wav
+    - speech: You should leave this place
+      audio: SoldierConvo6.wav
+    - speech: While you still can!
+      audio: SoldierConvo7.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    count: 8
+  clipCount: 8
   trigger: 0
   animateText: 1
-  fontSize: 6
+  fontSize: 3.5
   order:
   - 0
   - 1
   - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
   loopLast: 0
   loopAll: 0
   buttonMode: 0
   buttons: []
   mute: 0
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 6f3560b1b0adb844aaa5d7de65c36e26, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -21515,9 +21642,14 @@ MonoBehaviour:
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: a68769e870d2f75469ed4aab73836f18, type: 3}
+  - {fileID: 8300000, guid: a6114fd06a9ad454f88b23ade6288673, type: 3}
+  - {fileID: 8300000, guid: b592d52fe5e62064081a1a7700fb2561, type: 3}
+  - {fileID: 8300000, guid: 16e9ad7c37586814994a2c5c9c8b1637, type: 3}
+  - {fileID: 8300000, guid: a237f06c71031184cba3ccfecb786d64, type: 3}
+  - {fileID: 8300000, guid: 595df8d6c194f11419fd93ce2135c292, type: 3}
+  - {fileID: 8300000, guid: 329f776cc81edcc4bb579a94845447a1, type: 3}
+  - {fileID: 8300000, guid: 8fc9e0c1f28887f4c9facf1422c3aebc, type: 3}
   visuals: {fileID: 1162837834}
 --- !u!82 &1225573276
 AudioSource:
@@ -21529,7 +21661,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a68769e870d2f75469ed4aab73836f18, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -21635,7 +21767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Oh!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -24605,25 +24737,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: Where is everyone?
+      audio: PeasantQs20.wav
+    model: tts_models/en/ljspeech/vits--neon
+    count: 1
+  clipCount: 1
   trigger: 2
   animateText: 0
-  fontSize: 5
+  fontSize: 0
   order:
   - 0
-  - Child0
-  - 1
-  - Child1
-  - 2
-  - Child2
+  - Child4
+  - Child5
+  - Child6
+  - Child7
+  - Child8
+  - Child9
   loopLast: 0
   loopAll: 1
   buttonMode: 1
@@ -24632,12 +24761,11 @@ MonoBehaviour:
   - {fileID: 560915067}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
   child: {fileID: 1998901022}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 7a4bc70f426b1464baecfcba1974788d, type: 3}
   indxColl: 0
   indxKey: 0
   colliderParent: {fileID: 1035934536}
@@ -24647,9 +24775,7 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: 6dacc3f2b6e386f41b840a28ff6c1b0b, type: 3}
   visuals: {fileID: 759199716}
 --- !u!82 &1366050364
 AudioSource:
@@ -24661,7 +24787,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6dacc3f2b6e386f41b840a28ff6c1b0b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -24767,7 +24893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Where is everyone?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -27945,25 +28071,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: Oh hello there
+      audio: PeasantQs0.wav
+    model: tts_models/en/ljspeech/vits--neon
+    count: 1
+  clipCount: 1
   trigger: 2
   animateText: 0
-  fontSize: 5
+  fontSize: 0
   order:
   - 0
   - Child0
-  - 1
   - Child1
-  - 2
   - Child2
+  - Child3
   loopLast: 0
   loopAll: 1
   buttonMode: 1
@@ -27972,12 +28093,11 @@ MonoBehaviour:
   - {fileID: 351243970}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
   child: {fileID: 1998901022}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: e73955a8bfdfc6d419a73dc8a4bbcd4c, type: 3}
   indxColl: 0
   indxKey: 0
   colliderParent: {fileID: 1035934536}
@@ -27987,9 +28107,7 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: cef3ece2b0665a545b730b3948286480, type: 3}
   visuals: {fileID: 2099968210}
 --- !u!82 &1540339565
 AudioSource:
@@ -28001,7 +28119,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cef3ece2b0665a545b730b3948286480, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -28107,7 +28225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Oh hello there
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -28757,22 +28875,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: What is this place?
+      audio: MerchantQs0.wav
+    model: tts_models/en/ljspeech/vits--neon
+    count: 1
+  clipCount: 1
   trigger: 2
   animateText: 0
-  fontSize: 5
+  fontSize: 0
   order:
   - 0
   - Child0
-  - Child2
   loopLast: 0
   loopAll: 1
   buttonMode: 1
@@ -28781,12 +28894,11 @@ MonoBehaviour:
   - {fileID: 676807372}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
   child: {fileID: 1859396463}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 55b7e0b68a1e4a541b9435a9bc9fc68b, type: 3}
   indxColl: 0
   indxKey: 0
   colliderParent: {fileID: 924603126}
@@ -28796,9 +28908,7 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: 3903b60e79e003c4284c015238fe02d4, type: 3}
   visuals: {fileID: 1219381851}
 --- !u!82 &1568578993
 AudioSource:
@@ -28810,7 +28920,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3903b60e79e003c4284c015238fe02d4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -28916,7 +29026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: What is this place?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -29085,6 +29195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212000013830552104, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300090, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
 --- !u!4 &1573974633 stripped
@@ -30267,25 +30381,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
+    - speech: Who are you?
+      audio: SoldierQs0.wav
+    - speech: Defence from what?
+      audio: SoldierQs1.wav
     model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    count: 2
+  clipCount: 2
   trigger: 2
   animateText: 0
-  fontSize: 5
+  fontSize: 0
   order:
   - 0
   - Child0
-  - 1
   - Child1
-  - 2
   - Child2
+  - Child3
+  - 1
+  - Child4
   loopLast: 0
   loopAll: 1
   buttonMode: 1
@@ -30294,12 +30407,11 @@ MonoBehaviour:
   - {fileID: 636975788}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
   child: {fileID: 1225573275}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: e0c0f0ed917126446a8e208b8407181a, type: 3}
   indxColl: 0
   indxKey: 0
   colliderParent: {fileID: 1601178691}
@@ -30309,9 +30421,8 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: ce5aac36396ad4f4595d94f51f1691a0, type: 3}
+  - {fileID: 8300000, guid: ec0795e40c0819342bb929bc5ecfe90c, type: 3}
   visuals: {fileID: 1181997981}
 --- !u!82 &1653705486
 AudioSource:
@@ -30323,7 +30434,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ce5aac36396ad4f4595d94f51f1691a0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -30429,7 +30540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Who are you?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -31544,22 +31655,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: I don't have any money
+      audio: MerchantQs20.wav
+    model: tts_models/en/ljspeech/vits--neon
+    count: 1
+  clipCount: 1
   trigger: 2
   animateText: 0
-  fontSize: 5
+  fontSize: 0
   order:
-  - 1
+  - 0
   - Child1
   - Child2
+  - Child3
   loopLast: 0
   loopAll: 1
   buttonMode: 1
@@ -31568,12 +31676,11 @@ MonoBehaviour:
   - {fileID: 229720287}
   mute: 1
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 1
   child: {fileID: 1859396463}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 19994ec400493724186b6a111594b2d8, type: 3}
   indxColl: 0
   indxKey: 0
   colliderParent: {fileID: 924603126}
@@ -31583,9 +31690,7 @@ MonoBehaviour:
   progressButton: None
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: c75b0a9cf569d2144b856e2d6282010d, type: 3}
   visuals: {fileID: 121010406}
 --- !u!82 &1702461147
 AudioSource:
@@ -31597,7 +31702,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c75b0a9cf569d2144b856e2d6282010d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -31703,7 +31808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: I don't have any money
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -34402,34 +34507,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: Look lady I just work here okay?
+      audio: MerchantConvo0.wav
+    - speech: Boom! Free wand!
+      audio: MerchantConvo1.wav
+    - speech: Part of a new promotion!
+      audio: MerchantConvo2.wav
+    - speech: Show up and get a free ... wand.
+      audio: MerchantConvo3.wav
+    model: tts_models/en/jenny/jenny
+    count: 4
+  clipCount: 4
   trigger: 0
   animateText: 1
-  fontSize: 6
+  fontSize: 3.5
   order:
   - 0
   - 1
   - 2
+  - 3
   loopLast: 0
   loopAll: 0
   buttonMode: 0
   buttons: []
   mute: 0
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 7aa77ee52abc2054d9e2bda05e4ead9a, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -34439,9 +34546,10 @@ MonoBehaviour:
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: cc1ff544d78703c46bf5d5e21380abd4, type: 3}
+  - {fileID: 8300000, guid: 3ae86eb2b0b58a64cacf81e50d5eeedc, type: 3}
+  - {fileID: 8300000, guid: 0978523cf9faf094f87cf5b9e9db3102, type: 3}
+  - {fileID: 8300000, guid: f25bd52b8743dc94a99fde0061a463fd, type: 3}
   visuals: {fileID: 1233916837}
 --- !u!82 &1859396464
 AudioSource:
@@ -34453,7 +34561,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cc1ff544d78703c46bf5d5e21380abd4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -34559,7 +34667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Look lady I just work here okay?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -34687,9 +34795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitable: {fileID: 140699990}
   bubbles:
-  - {fileID: 1859396463}
-  - {fileID: 1568578992}
-  - {fileID: 1702461146}
+  - {fileID: 1568578989}
+  - {fileID: 1702461143}
 --- !u!114 &1859396468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37385,34 +37492,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble:
     bubble:
-    - speech: Hello this is test 0
-      audio: Test0.wav
-    - speech: Hello this is test 1
-      audio: Test1.wav
-    - speech: Hello this is test 2
-      audio: Test2.wav
-    model: tts_models/en/ljspeech/tacotron2-DDC
-    count: 3
-  clipCount: 3
+    - speech: Oh yay a visitor!
+      audio: PeasantConvo0.wav
+    - speech: I am so glad you have come to save us!
+      audio: PeasantConvo1.wav
+    - speech: It has been lonely around here
+      audio: PeasantConvo2.wav
+    - speech: Since the beast arrived
+      audio: PeasantConvo3.wav
+    - speech: Well when the beast came
+      audio: PeasantConvo4.wav
+    - speech: It started taking people in the night
+      audio: PeasantConvo5.wav
+    - speech: And taking them into the caves one by one
+      audio: PeasantConvo6.wav
+    - speech: At least I still have Brother Heath
+      audio: PeasantConvo7.wav
+    - speech: And The Guard
+      audio: PeasantConvo8.wav
+    - speech: Even now I still don't know their name.
+      audio: PeasantConvo9.wav
+    model: tts_models/en/ljspeech/vits--neon
+    count: 10
+  clipCount: 10
   trigger: 0
   animateText: 1
-  fontSize: 6
+  fontSize: 3.5
   order:
   - 0
   - 1
   - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
   loopLast: 0
   loopAll: 0
   buttonMode: 0
   buttons: []
   mute: 0
   oneTime: 0
-  pausePlayer: {fileID: 0}
   autoPlay: 0
   bubbleOn: 0
   childOp: 0
   child: {fileID: 0}
-  meta: {fileID: 4900000, guid: a893c7e2b4a893a4ab2b92f71e536bb5, type: 3}
+  meta: {fileID: 4900000, guid: 8c0987ce904b72346aaa5b2ee599de63, type: 3}
   indxColl: 1
   indxKey: 92
   colliderParent: {fileID: 2022268064}
@@ -37422,9 +37549,16 @@ MonoBehaviour:
   progressButton: E
   audioMixer: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
   clips:
-  - {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
-  - {fileID: 8300000, guid: 3c2d4d6f2099af746bb743cf3ca8aff7, type: 3}
-  - {fileID: 8300000, guid: 41a48035744d55b4b8751fab55126094, type: 3}
+  - {fileID: 8300000, guid: 7db55d80ecaae054c9dada10ee5b7d7a, type: 3}
+  - {fileID: 8300000, guid: 9111a4fa2d87a904287316b486dced4f, type: 3}
+  - {fileID: 8300000, guid: 499becd09811e2e4eaeccc6ecc51bb1c, type: 3}
+  - {fileID: 8300000, guid: 37b888c07b2a44e44b2e809b88227d74, type: 3}
+  - {fileID: 8300000, guid: 6497eaf12e023d44082bb9df7c2443b7, type: 3}
+  - {fileID: 8300000, guid: 965975cbbfe860a42a5e940481393540, type: 3}
+  - {fileID: 8300000, guid: 4be6e45ae08724b47bbda9a69f0a4c2c, type: 3}
+  - {fileID: 8300000, guid: 6e54d84aa2941e54eb983df7d440eb06, type: 3}
+  - {fileID: 8300000, guid: 0ec2a169f03325a4b993b848b92cb928, type: 3}
+  - {fileID: 8300000, guid: 2290a549ab8198b4d9b76c5e5b100fbe, type: 3}
   visuals: {fileID: 1140503617}
 --- !u!82 &1998901023
 AudioSource:
@@ -37436,7 +37570,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -16121502917472528, guid: 735ee6620c21d7740b65424075066b8f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9453781ac51f7c041beb79817bda7b1a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7db55d80ecaae054c9dada10ee5b7d7a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -37542,7 +37676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is test 0
+  m_text: Oh yay a visitor!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
   m_sharedMaterial: {fileID: 5796451521956871573, guid: d3c6cdcd59aabeb4e8219d82c1b06af5, type: 2}
@@ -39162,6 +39296,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1679699438320188053, guid: 011321ec80b594c619a8c96bc51b4980, type: 3}
   m_PrefabInstance: {fileID: 1375462521}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2113976534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+  m_PrefabInstance: {fileID: 75298126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2115565957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5303581562181440272, guid: 573d3956aa51041a4905113ea0f10c40, type: 3}
@@ -39542,6 +39681,10 @@ PrefabInstance:
     - target: {fileID: 2612452129683350272, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_SortingLayerID
       value: 2017783993
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581684743427378859, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4105362945620786469, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_Name

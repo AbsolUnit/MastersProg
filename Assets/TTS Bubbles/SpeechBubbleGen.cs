@@ -47,12 +47,10 @@ public class SpeechBubbleGen : MonoBehaviour
 	private AudioClip currentClip;
 	private string currentText;
 	private int currentBubbleIndx;
+	private float currentClipLen;
 	
     private TextMeshPro textBox;
     private AudioSource audioSource;
-	private Vector3 pos;
-	private Quaternion rot;
-	private bool flag;
 
 	public void Generate()
     {
@@ -190,6 +188,7 @@ public class SpeechBubbleGen : MonoBehaviour
 	private void UpdateClipText(int n)
 	{
 		currentClip = clips[n];
+		currentClipLen = clips[n].length;
 		currentText = bubble.bubble[n].speech;
 		audioSource.clip = currentClip;
 		textBox.text = currentText;
@@ -238,6 +237,7 @@ public class SpeechBubbleGen : MonoBehaviour
 				SpeechBubbleGen c = p.child;
 				p = c;
 			}
+			currentClipLen = p.clips[indx].length;
 			p.PlayBubble(indx);
 
 			if (buttonMode || autoPlay)
@@ -290,7 +290,7 @@ public class SpeechBubbleGen : MonoBehaviour
 
 	private IEnumerator WaitNext()
 	{
-		yield return new WaitForSeconds(audioSource.clip.length + 1);
+		yield return new WaitForSeconds(currentClipLen + 1);
 		NextBubble();
 	}
 
@@ -412,14 +412,12 @@ public class SpeechBubbleGen : MonoBehaviour
 			p.visuals.SetActive(false);
 			p.audioSource.Stop();
 			p.bubbleOn = false;
-			p.flag = false;
 			SpeechBubbleGen c = p.child;
 			c.currentBubbleIndx = 0;
 			c.textBox.enabled = false;
 			c.visuals.SetActive(false);
 			c.audioSource.Stop();
 			c.bubbleOn = false;
-			c.flag = false;
 			p = c;
 		}
 	}

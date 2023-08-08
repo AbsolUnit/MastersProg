@@ -1,0 +1,14 @@
+{
+    "bubble": [
+        {
+            "speech": "Who are you?",
+            "audio": "SoldierQs0.wav"
+        },
+        {
+            "speech": "Defence from what?",
+            "audio": "SoldierQs1.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/tacotron2-DDC",
+    "count": 2
+}

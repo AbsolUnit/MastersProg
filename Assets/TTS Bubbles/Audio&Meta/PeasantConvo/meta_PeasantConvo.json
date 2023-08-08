@@ -1,0 +1,46 @@
+{
+    "bubble": [
+        {
+            "speech": "Oh yay a visitor!",
+            "audio": "PeasantConvo0.wav"
+        },
+        {
+            "speech": "I am so glad you have come to save us!",
+            "audio": "PeasantConvo1.wav"
+        },
+        {
+            "speech": "It has been lonely around here",
+            "audio": "PeasantConvo2.wav"
+        },
+        {
+            "speech": "Since the beast arrived",
+            "audio": "PeasantConvo3.wav"
+        },
+        {
+            "speech": "Well when the beast came",
+            "audio": "PeasantConvo4.wav"
+        },
+        {
+            "speech": "It started taking people in the night",
+            "audio": "PeasantConvo5.wav"
+        },
+        {
+            "speech": "And taking them into the caves one by one",
+            "audio": "PeasantConvo6.wav"
+        },
+        {
+            "speech": "At least I still have Brother Heath",
+            "audio": "PeasantConvo7.wav"
+        },
+        {
+            "speech": "And The Guard",
+            "audio": "PeasantConvo8.wav"
+        },
+        {
+            "speech": "Even now I still don't know their name.",
+            "audio": "PeasantConvo9.wav"
+        }
+    ],
+    "model": "tts_models/eng/fairseq/vits",
+    "count": 10
+}

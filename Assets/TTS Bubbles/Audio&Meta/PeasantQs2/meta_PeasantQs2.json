@@ -1,0 +1,10 @@
+{
+    "bubble": [
+        {
+            "speech": "Where is everyone?",
+            "audio": "PeasantQs20.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/vits--neon",
+    "count": 1
+}

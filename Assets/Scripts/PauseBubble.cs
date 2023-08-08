@@ -10,16 +10,16 @@ public class PauseBubble : MonoBehaviour
     private GameObject waitable;
 
     [SerializeField]
-    private SpeechBubbleGen[] bubbles;
+    private GameObject[] bubbles;
 
 	// Start is called before the first frame update
 	void Start()
     {
         if (waitable.activeSelf == true)
         {
-            foreach (SpeechBubbleGen bubb in bubbles)
+            foreach (GameObject bubb in bubbles)
             {
-                bubb.enabled = false;
+                bubb.SetActive(false);
             }
 		}
     }
@@ -29,16 +29,16 @@ public class PauseBubble : MonoBehaviour
     {
 		if (waitable.activeSelf == true)
 		{
-			foreach (SpeechBubbleGen bubb in bubbles)
+			foreach (GameObject bubb in bubbles)
 			{
-				bubb.enabled = false;
+				bubb.SetActive(false);
 			}
 		}
         else
         {
-			foreach (SpeechBubbleGen bubb in bubbles)
+			foreach (GameObject bubb in bubbles)
 			{
-				bubb.enabled = true;
+				bubb.SetActive(true);
 			}
 		}
 	}

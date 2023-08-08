@@ -1,0 +1,22 @@
+{
+    "bubble": [
+        {
+            "speech": "Oh Hey!",
+            "audio": "MerchantIntro0.wav"
+        },
+        {
+            "speech": "I'm sorry if I seem flusted",
+            "audio": "MerchantIntro1.wav"
+        },
+        {
+            "speech": "It has been a long time since I had any customers",
+            "audio": "MerchantIntro2.wav"
+        },
+        {
+            "speech": "How can I help you?",
+            "audio": "MerchantIntro3.wav"
+        }
+    ],
+    "model": "tts_models/en/jenny/jenny",
+    "count": 4
+}

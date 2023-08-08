@@ -1,0 +1,10 @@
+{
+    "bubble": [
+        {
+            "speech": "Where is everyone?",
+            "audio": "SoldierQs20.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/tacotron2-DDC",
+    "count": 1
+}

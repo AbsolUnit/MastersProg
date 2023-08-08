@@ -1,0 +1,38 @@
+{
+    "bubble": [
+        {
+            "speech": "Oh!",
+            "audio": "SoldierConvo0.wav"
+        },
+        {
+            "speech": "I did not see you there.",
+            "audio": "SoldierConvo1.wav"
+        },
+        {
+            "speech": "I am THE guard",
+            "audio": "SoldierConvo2.wav"
+        },
+        {
+            "speech": "This places last defence!",
+            "audio": "SoldierConvo3.wav"
+        },
+        {
+            "speech": "The Beast of course! You silly girl.",
+            "audio": "SoldierConvo4.wav"
+        },
+        {
+            "speech": "Do you not know?",
+            "audio": "SoldierConvo5.wav"
+        },
+        {
+            "speech": "You should leave this place",
+            "audio": "SoldierConvo6.wav"
+        },
+        {
+            "speech": "While you still can!",
+            "audio": "SoldierConvo7.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/tacotron2-DDC",
+    "count": 8
+}
