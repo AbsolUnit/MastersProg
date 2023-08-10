@@ -1,0 +1,10 @@
+{
+    "bubble": [
+        {
+            "speech": "I will help you!",
+            "audio": "PreistQs20.wav"
+        }
+    ],
+    "model": "tts_models/en/ljspeech/vits--neon",
+    "count": 1
+}

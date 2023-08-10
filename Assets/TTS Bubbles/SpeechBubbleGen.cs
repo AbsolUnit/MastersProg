@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(TextMeshPro))]
 [RequireComponent(typeof(AudioSource))]
@@ -27,6 +28,7 @@ public class SpeechBubbleGen : MonoBehaviour
 	public bool oneTime;
 	public bool autoPlay;
 	public bool bubbleOn;
+	public UnityEvent callback;
 
 	public bool childOp;
 	public SpeechBubbleGen child;
@@ -163,6 +165,7 @@ public class SpeechBubbleGen : MonoBehaviour
 		}
 		else
 		{
+			callback.Invoke();
 			if (oneTime)
 			{
 				TurnOff();

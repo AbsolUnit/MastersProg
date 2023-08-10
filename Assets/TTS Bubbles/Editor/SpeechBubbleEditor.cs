@@ -48,6 +48,7 @@ public class SpeechBubbleEditor : Editor
 	private SerializedProperty mute; //bool
 	private SerializedProperty oneTime; //bool
 	private SerializedProperty autoPlay; //bool
+	private SerializedProperty callback; //UnityEvent
 
 	private void OnEnable()
 	{
@@ -80,6 +81,7 @@ public class SpeechBubbleEditor : Editor
 		mute = serializedObject.FindProperty("mute");
 		oneTime = serializedObject.FindProperty("oneTime");
 		autoPlay = serializedObject.FindProperty("autoPlay");
+		callback = serializedObject.FindProperty("callback");
 		GetKeyCodes();
 	}
 
@@ -211,6 +213,7 @@ public class SpeechBubbleEditor : Editor
 		}
 
 		EditorGUILayout.PropertyField(order, new GUIContent("Bubble Order", "Select the order of the speech bubbles"));
+		EditorGUILayout.PropertyField(callback, new GUIContent("Call Back", "A function you want to be called when a bubble reaches the end of the list"));
 
 		EditorGUILayout.BeginHorizontal();
 		float buttonWidth = 150;

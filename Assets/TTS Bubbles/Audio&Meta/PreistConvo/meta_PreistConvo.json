@@ -1,0 +1,30 @@
+{
+    "bubble": [
+        {
+            "speech": "Hello there traveler, I am Brother heath",
+            "audio": "PreistConvo0.wav"
+        },
+        {
+            "speech": "I should warn you to leave this place",
+            "audio": "PreistConvo1.wav"
+        },
+        {
+            "speech": "As I am sure the guard has already told you",
+            "audio": "PreistConvo2.wav"
+        },
+        {
+            "speech": "But I am afraid we need help",
+            "audio": "PreistConvo3.wav"
+        },
+        {
+            "speech": "Thank you traveler",
+            "audio": "PreistConvo4.wav"
+        },
+        {
+            "speech": "We owe you so much",
+            "audio": "PreistConvo5.wav"
+        }
+    ],
+    "model": "tts_models/eng/fairseq/vits",
+    "count": 6
+}

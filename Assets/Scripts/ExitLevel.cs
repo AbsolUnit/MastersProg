@@ -28,6 +28,12 @@ public class ExitLevel : MonoBehaviour
 		Application.Quit();
 	}
 
+	public void GoToSurvey()
+	{
+		Application.OpenURL("http://www.google.com/");
+		Application.Quit();
+	}
+
 	public void GoBack()
 	{
 		exitMenu.SetActive(false);
