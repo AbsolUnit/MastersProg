@@ -30,7 +30,7 @@ public class ExitLevel : MonoBehaviour
 
 	public void GoToSurvey()
 	{
-		Application.OpenURL("http://www.google.com/");
+		Application.OpenURL("https://angliaruskin.onlinesurveys.ac.uk/tts-for-game-dialog-survey");
 		Application.Quit();
 	}
 

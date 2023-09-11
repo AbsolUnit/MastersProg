@@ -159,7 +159,7 @@ public class SpeechBubbleGen : MonoBehaviour
 
 	public void NextBubble()
 	{
-		if (currentBubbleIndx < order.Count - 1)
+		if (currentBubbleIndx < order.Count - 1 && bubbleOn)
 		{
 			PlayBubble(currentBubbleIndx + 1);
 		}
@@ -172,11 +172,11 @@ public class SpeechBubbleGen : MonoBehaviour
 				this.gameObject.SetActive(false);
 			}
 
-			if (loopLast)
+			if (loopLast && bubbleOn)
 			{
 				PlayBubble(currentBubbleIndx);
 			}
-            else if (loopAll)
+            else if (loopAll && bubbleOn)
             {
 				PlayBubble(0);
             }
@@ -318,7 +318,7 @@ public class SpeechBubbleGen : MonoBehaviour
 				break;
 			}
 		}
-		if (buttonMode)
+		if (buttonMode && bubbleOn)
 		{
 			foreach (Button button in buttons)
 			{
